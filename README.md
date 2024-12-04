@@ -32,3 +32,7 @@ Put this line inside the source directory somewhere:
 ```
 
 Now you can code just like with lua, you can then compile the code with `tstl` and use it
+
+## License
+
+This project is licensed under [MIT License](./LICENSE)
