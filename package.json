@@ -5,10 +5,14 @@
   "types": "index.d.ts",
   "scripts": {},
   "keywords": [
+    "minecraft",
     "typescript",
     "lua",
-    "types"
+    "types",
+    "typescript-to-lua",
+    "figura"
   ],
+  "files": ["types","index.d.ts"],
   "author": "N1ghtTheF0x",
   "license": "MIT",
   "devDependencies": {
