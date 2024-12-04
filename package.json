@@ -1,0 +1,26 @@
+{
+  "name": "figura-ts",
+  "version": "1.0.0",
+  "description": "Lua Types for the Minecraft Mod Figura",
+  "types": "index.d.ts",
+  "scripts": {},
+  "keywords": [
+    "typescript",
+    "lua",
+    "types"
+  ],
+  "author": "N1ghtTheF0x",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript-to-lua": "latest"
+  },
+  "dependencies": {
+    "lua-types": "latest"
+  },
+  "homepage": "https://github.com/N1ghtTheF0x/figura-ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N1ghtTheF0x/figura-ts.git"
+  },
+  "packageManager": "pnpm@9.14.3+sha512.c0f53ee99477ed969b82b289ad011a5d16bf1623c957e7f29eabe8d0c00b574c29b8c7f54f6c67ee710c73f285c8154d07ce44b46fe2c0eeb476a90441bac371"
+}
