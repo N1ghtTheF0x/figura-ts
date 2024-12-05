@@ -1,144 +1,147 @@
-/** @noSelf **/
-declare namespace world
+/// <reference path="map.d.ts" />
+
+declare interface WorldAPI
 {
-    export function exists(): boolean
-    export function getBiome(pos: Vector3): BiomeAPI
-    export function getBiome(x: number,y: number,z: number): BiomeAPI
-    export function getBuildHeight(): LuaMultiReturn<[number,number]>
-    export function getDimension(): string
-    export function getHeight(pos: Vector2,heightmap: string): number
-    export function getHeight(x: number,y: number,heightmap: string): number
-    export function getSpawnPoint(): Vector3
-    export function isChunkLoaded(pos: Vector3): boolean
-    export function isChunkLoaded(x: number,y: number,z: number): boolean
-    export function isOpenSky(pos: Vector3): boolean
-    export function isOpenSky(x: number,y: number,z: number): boolean
-    export function getBlockState(pos: Vector3): BlockStateAPI
-    export function getBlockState(x: number,y: number,z: number): BlockStateAPI
-    export function getBlocks(min: Vector3,max: Vector3): LuaTable
-    export function getBlocks(minX: number,minY: number,minZ: number,max: Vector3): LuaTable
-    export function getBlocks(min: Vector3,maxX: number,maxY: number,maxZ: number): LuaTable
-    export function getBlocks(minX: number,minY: number,minZ: number,maxX: number,maxY: number,maxZ: number): LuaTable
-    export function newBlock(block: string): BlockStateAPI
-    export function newBlock(block: string,pos: Vector3): BlockStateAPI
-    export function newBlock(block: string,x: number,y: number,z: number): BlockStateAPI
-    export function newItem(item: string): ItemStack
-    export function newItem(item: string,count: number): ItemStack
-    export function newItem(item: string,count: number,damage: number): ItemStack
-    export function avatarVars(): LuaTable
-    export function getEntity(uuid: string): EntityAPI
-    export function getPlayers(): LuaTable<string,PlayerAPI>
-    export function getDay(): number
-    export function getDay(delta: number): number
-    export function getDayTime(): number
-    export function getDayTime(delta: number): number
-    export function getMoonPhase(): number
-    export function getTime(): number
-    export function getTime(delta: number): number
-    export function getTimeOfDay(): number
-    export function getTimeOfDay(delta: number): number
-    export function getBlockLightLevel(pos: Vector3): number
-    export function getBlockLightLevel(x: number,y: number,z: number): number
-    export function getLightLevel(pos: Vector3): number
-    export function getLightLevel(x: number,y: number,z: number): number
-    export function getSkyLightLevel(pos: Vector3): number
-    export function getSkyLightLevel(x: number,y: number,z: number): number
-    export function getRainGradient(): number
-    export function getRainGradient(delta: number): number
-    export function isThundering(): boolean
-    export function getRedstonePower(pos: Vector3): number
-    export function getRedstonePower(x: number,y: number,z: number): number
-    export function getStrongRedstonePower(pos: Vector3): number
-    export function getStrongRedstonePower(x: number,y: number,z: number): number
+    getBiome(pos: FiguraVec3): BiomeAPI
+    getBiome(x: number,y: number,z: number): BiomeAPI
+    getBlockState(pos: FiguraVec3): BlockStateAPI
+    getBlockState(x: number,y: number,z: number): BlockStateAPI
+    isChunkLoaded(pos: FiguraVec3): boolean
+    isChunkLoaded(x: number,y: number,z: number): boolean
+    getBlocks(min: FiguraVec3,max: FiguraVec3): LuaTable<number,BlockStateAPI>
+    getBlocks(minX: number,minY: number,minZ: number,max: FiguraVec3): LuaTable<number,BlockStateAPI>
+    getBlocks(min: FiguraVec3,maxX: number,maxY: number,maxZ: number): LuaTable<number,BlockStateAPI>
+    getBlocks(minX: number,minY: number,minZ: number,maxX: number,maxY: number,maxZ: number): LuaTable<number,BlockStateAPI>
+    getMapData(id: string): LuaMap<string,MapData>
+    getRedstonePower(pos: FiguraVec3): number
+    getRedstonePower(x: number,y: number,z: number): number
+    getStrongRedstonePower(pos: FiguraVec3): number
+    getStrongRedstonePower(x: number,y: number,z: number): number
+    getTime(): number
+    getTime(delta: number): number
+    getTimeOfDay(): number
+    getTimeOfDay(delta: number): number
+    getDayTime(): number
+    getDayTime(delta: number): number
+    getDay(): number
+    getDay(delta: number): number
+    getMoonPhase(): number
+    getRainGradient(): number
+    getRainGradient(delta: number): number
+    isThundering(): boolean
+    getLightLevel(pos: FiguraVec3): number
+    getLightLevel(x: number,y: number,z: number): number
+    getSkyLightLevel(pos: FiguraVec3): number
+    getSkyLightLevel(x: number,y: number,z: number): number
+    getBlockLightLevel(pos: FiguraVec3): number
+    getBlockLightLevel(x: number,y: number,z: number): number
+    getHeight(pos: FiguraVec2,heightmap: string): number
+    getHeight(x: number,y: number,heightmap: string): number
+    isOpenSky(pos: FiguraVec3): boolean
+    isOpenSky(x: number,y: number,z: number): boolean
+    getDimension(): string
+    getPlayers(): LuaMap<string,EntityAPI>
+    getEntities(pos1: FiguraVec3,pos2: FiguraVec3): LuaTable<number,EntityAPI>
+    getEntity(uuid: string): EntityAPI
+    avatarVars(): LuaTable<string,LuaTable>
+    newBlock(block: string): BlockStateAPI
+    newBlock(block: string,pos: FiguraVec3): BlockStateAPI
+    newBlock(block: string,x: number,y: number,z: number): BlockStateAPI
+    newItem(item: string): ItemStackAPI
+    newItem(item: string,count: number): ItemStackAPI
+    newItem(item: string,count: number,damage: number): ItemStackAPI
+    exists(): boolean
+    getBuildHeight(): LuaMultiReturn<[number,number]>
+    getSpawnPoint(): FiguraVec3
 }
+declare const world: WorldAPI
 declare interface BiomeAPI
 {
     readonly id: string
-    getPos(): Vector3
-    setPos(pos: Vector3): this
+    getPos(): FiguraVec3
+    setPos(pos: FiguraVec3): this
     setPos(x: number,y: number,z: number): this
-    pos(pos: Vector3): this
+    pos(pos: FiguraVec3): this
     pos(x: number,y: number,z: number): this
     getTags(): LuaTable<number,string>
     getTemperature(): number
     getPrecipitation(): Precipitation
-    getSkyColor(): Vector3
-    getFoliageColor(): Vector3
-    getGrassColor(): Vector3
-    getFogColor(): Vector3
-    getWaterColor(): Vector3
-    getWaterFogColor(): Vector3
+    getSkyColor(): FiguraVec3
+    getFoliageColor(): FiguraVec3
+    getGrassColor(): FiguraVec3
+    getFogColor(): FiguraVec3
+    getWaterColor(): FiguraVec3
+    getWaterFogColor(): FiguraVec3
     getDownfall(): number
     isHot(): boolean
     isCold(): boolean
 }
 declare interface BlockStateAPI
 {
+    readonly id: string
+    readonly properties: LuaTable
     getID(): string
     getProperties(): LuaTable
-    getPos(): Vector3
-    setPos(pos: Vector3): this
+    getPos(): FiguraVec3
+    setPos(pos: FiguraVec3): this
     setPos(x: number,y: number,z: number): this
-    pos(pos: Vector3): this
+    pos(pos: FiguraVec3): this
     pos(x: number,y: number,z: number): this
     isTranslucent(): boolean
     getOpacity(): number
-    getMapColor(): Vector3
+    getMapColor(): FiguraVec3
     isSolidBlock(): boolean
     isFullCube(): boolean
     hasEmissiveLighting(): boolean
     getHardness(): number
-
     getComparatorOutput(): number
-    emitsRedstoneSignal(): boolean
-    getJumpVelocityMultiplier(): number
-    getVelocityMultiplier(): number
-    getCollisionShape(): LuaTable
-    getOutlineShape(): LuaTable
-    getLuminance(): number
-    getTextures(): LuaTable
-    getBlastResistance(): number
-    getFriction(): number
-    hasCollision(): boolean
-    isAir(): boolean
-    isOpaque(): boolean
-    getEntityData(): LuaTable
-    getFluidTags(): LuaTable
-    getSounds(): LuaTable
-    getTags(): LuaTable
-    asItem(): ItemStack
     hasBlockEntity(): boolean
+    isOpaque(): boolean
+    emitsRedstoneSignal(): boolean
+    getLuminance(): number
+    getFriction(): number
+    getVelocityMultiplier(): number
+    getJumpVelocityMultiplier(): number
+    getBlastResistance(): number
+    asItem(): ItemStackAPI
+    getTags(): LuaTable<number,string>
+    hasCollision(): boolean
+    getCollisionShape(): LuaTable<number,LuaTable<number,FiguraVec3>>
+    getOutlineShape(): LuaTable<number,LuaTable<number,FiguraVec3>>
+    getSounds(): LuaTable
+    getFluidTags(): LuaTable<number,string>
+    getEntityData(): LuaTable | undefined
     toStateString(): string
-    id: string
-    properties: LuaTable
+    getTextures(): LuaMap<string,LuaSet<string>>
+    isAir(): boolean
 }
-declare interface ItemStack
+declare interface ItemStackAPI
 {
-    getCount(): number
+    readonly id: string
+    readonly tag: LuaTable
     getID(): string
-    getMaxCount(): number
-    getName(): string
-    getPopTime(): number
-    getRarity(): ItemStackRarity
-    getTag(): LuaTable
-    getTags(): LuaTable
-    getUseAction(): string
-    getUseDuration(): number
-    copy(): this
-    hasGlint(): boolean
-    isFood(): boolean
-    isStackable(): boolean
-    toStackString(): string
+    getTag(): ItemStackAPI["tag"]
+    getCount(): number
     getDamage(): number
-    getEquipmentSlot(): string
-    getMaxDamage(): number
-    getRepairCost(): number
-    isArmor(): boolean
-    isDamageable(): boolean
-    isEnchantable(): boolean
-    isTool(): boolean
-    getBlockstate(): BlockStateAPI
+    getPopTime(): number
+    hasGlint(): boolean
+    getTags(): LuaTable<number,string>
     isBlockItem(): boolean
-    id: string
-    tag: LuaTable
+    isFood(): boolean
+    getUseAction(): string
+    getName(): string
+    getMaxCount(): number
+    getRarity(): ItemStackRarity
+    isEnchantable(): boolean
+    getMaxDamage(): number
+    isDamageable(): boolean
+    isStackable(): boolean
+    getRepairCost(): number
+    getUseDuration(): number
+    toStackString(): string
+    isArmor(): boolean
+    isTool(): boolean
+    getEquipmentSlot(): string
+    copy(): this
+    getBlockstate(): BlockStateAPI
 }

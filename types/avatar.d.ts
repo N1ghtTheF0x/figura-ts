@@ -7,13 +7,13 @@ declare interface AvatarAPI<Data = {}>
     getUUID(): string
     getCurrentInstruction(): number
     getColor(): string
-    setColor(color: Vector3): this
+    setColor(color: FiguraVec3): this
     setColor(r: number,g: number,b: number): this
-    setColor(color: Vector3,badgeName: string): this
+    setColor(color: FiguraVec3,badgeName: string): this
     setColor(r: number,g: number,b: number,badgeName: string): this
-    color(color: Vector3): this
+    color(color: FiguraVec3): this
     color(r: number,g: number,b: number): this
-    color(color: Vector3,badgeName: string): this
+    color(color: FiguraVec3,badgeName: string): this
     color(r: number,g: number,b: number,badgeName: string): this
     getBadges(): string
     getVersion(): string

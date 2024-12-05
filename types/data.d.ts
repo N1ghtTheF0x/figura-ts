@@ -21,7 +21,7 @@ declare interface FiguraBuffer
     readDoubleLE(): number
     readString(): string
     readString(length: number): string
-    readString(length: number,encoding: StringEncodings): string
+    readString(length: number,encoding: StringEncoding): string
     readBase64(): string
     readBase64(length: number): string
     readByteArray(): string
@@ -40,7 +40,7 @@ declare interface FiguraBuffer
     writeFloatLE(val: number): void
     writeDoubleLE(val: number): void
     writeString(val: string): number
-    writeString(val: string,encoding: StringEncodings): number
+    writeString(val: string,encoding: StringEncoding): number
     writeBase64(base64: string): number
     writeByteArray(array: string): number
     getLength(): number
@@ -81,7 +81,6 @@ declare interface FiguraOutputStream
     flush(): void
     close(): void
 }
-// Resources
 declare interface ResourcesAPI
 {
     get(path: string): FiguraInputStream

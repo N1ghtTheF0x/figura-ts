@@ -15,7 +15,7 @@ declare interface Animation
     getTime(): number
     setTime(time: number): number
     time(time: number): number
-    getPlayState(): PlayStates
+    getPlayState(): PlayState
     newCode(time: number,code: string): this
     code(time: number,code: string): this
     getBlend(): number
@@ -44,9 +44,9 @@ declare interface Animation
     overrideRot(override: boolean): this
     overridePos(override: boolean): this
     overrideScale(override: boolean): this
-    getLoop(): LoopModes
-    setLoop(loop: LoopModes): this
-    loop(loop: LoopModes): this
+    getLoop(): LoopMode
+    setLoop(loop: LoopMode): this
+    loop(loop: LoopMode): this
     getPriority(): number
     setPriority(priority: number): this
     priority(priority: number): this

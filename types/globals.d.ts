@@ -1,7 +1,7 @@
 declare function require(this: void,scriptName: string): unknown
-declare function listFiles(this: void): LuaTable
-declare function listFiles(this: void,folder: string): LuaTable
-declare function listFiles(this: void,folder: string,subFolders: boolean): LuaTable
+declare function listFiles(this: void): LuaTable<number,string>
+declare function listFiles(this: void,folder: string): LuaTable<number,string>
+declare function listFiles(this: void,folder: string,subFolders: boolean): LuaTable<number,string>
 declare function print(this: void,...args: Array<unknown>): string
 declare function log(this: void,...args: Array<unknown>): string
 declare function printTable(this: void,table: LuaTable): string

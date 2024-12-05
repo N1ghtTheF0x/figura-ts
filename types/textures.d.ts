@@ -5,39 +5,45 @@ declare interface TextureDefinition
     specular?: FiguraTexture
     normal?: FiguraTexture
 }
+declare type FiguraTextureApply = (this: void,color: FiguraVec4,x: number,y: number) => FiguraVec4
 declare interface FiguraTexture
 {
-    getDimensions(): Vector2
+    readonly name: string
     getName(): string
     getPath(): string
-    setPixel(x: number,y: number,rgb: Vector3): this
-    setPixel(x: number,y: number,rgba: Vector4): this
+    getDimensions(): FiguraVec2
+    getPixel(x: number,y: number): FiguraVec4
+    setPixel(x: number,y: number,rgb: FiguraVec3): this
+    setPixel(x: number,y: number,rgba: FiguraVec4): this
     setPixel(x: number,y: number,r: number,g: number,b: number,a: number): this
-    getPixel(x: number,y: number): Vector4
-    applyFunc(x: number,y: number,width: number,height: number,func: (x: number,y: number,color: Vector4) => Vector4): this
-    applyMatrix(x: number,y: number,width: number,height: number,matrix: Matrix4,clip: boolean): FiguraTexture
-    fill(x: number,y: number,width: number,height: number,rgb: Vector3): this
-    fill(x: number,y: number,width: number,height: number,rgba: Vector4): this
+    pixel(x: number,y: number,rgb: FiguraVec3): this
+    pixel(x: number,y: number,rgba: FiguraVec4): this
+    pixel(x: number,y: number,r: number,g: number,b: number,a: number): this
+    fill(x: number,y: number,width: number,height: number,rgb: FiguraVec3): this
+    fill(x: number,y: number,width: number,height: number,rgba: FiguraVec4): this
     fill(x: number,y: number,width: number,height: number,r: number,g: number,b: number,a: number): this
-    restore(): FiguraTexture
+    update(): this
+    restore(): this
     save(): string
-    update(): FiguraTexture
+    applyFunc(x: number,y: number,width: number,height: number,func: FiguraTextureApply): this
+    applyMatrix(x: number,y: number,width: number,height: number,matrix: FiguraMat4,clip: boolean): this
 }
 declare interface TextureAtlas
 {
-    getHeight(): number
-    getSpriteUV(path: string): Vector4
+    listSprites(): LuaTable<number,string>
+    getSpriteUV(path: string): FiguraVec4
     getWidth(): number
-    listSprites(): LuaTable
+    getHeight(): number
 }
 declare interface ITexturesAPI
 {
-    getTextures(): LuaTable<number,FiguraTexture>
-    copy(name: string,texture: FiguraTexture): FiguraTexture
-    fromVanilla(name: string,path: string): FiguraTexture
     newTexture(name: string,width: number,height: number): FiguraTexture
     read(name: string,base64Text: string): FiguraTexture
-    read(name: string,byteArray: LuaTable): FiguraTexture
+    read(name: string,byteArray: LuaTable<number,number>): FiguraTexture
+    copy(name: string,texture: FiguraTexture): FiguraTexture
+    get(name: string): FiguraTexture
+    getTextures(): LuaTable<number,FiguraTexture>
+    fromVanilla(name: string,path: string): FiguraTexture
 }
 declare type TexturesAPI = ITexturesAPI & Record<string,FiguraTexture>
 declare const textures: TexturesAPI

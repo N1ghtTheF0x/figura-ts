@@ -24,19 +24,19 @@ declare interface ClientAPI
     isWindowFocused(): boolean
     isHudEnabled(): boolean
     isDebugOverlayEnabled(): boolean
-    getWindowSize(): Vector2
+    getWindowSize(): FiguraVec2
     getFOV(): number
     getSystemTime(): number
-    getMousePos(): Vector2
-    getScaledWindowSize(): Vector2
+    getMousePos(): FiguraVec2
+    getScaledWindowSize(): FiguraVec2
     getGuiScale(): number
-    getCameraPos(): Vector3
-    getCameraRot(): Vector3
-    getCameraDir(): Vector3
+    getCameraPos(): FiguraVec3
+    getCameraRot(): FiguraVec3
+    getCameraDir(): FiguraVec3
     getTextWidth(text: string): number
     getTextHeight(text: string): number
-    getTextDimensions(text: string): Vector2
-    getTextDimensions(text: string,maxWidth: number,wrap: boolean): Vector2
+    getTextDimensions(text: string): FiguraVec2
+    getTextDimensions(text: string,maxWidth: number,wrap: boolean): FiguraVec2
     getActiveLang(): string
     isModLoaded(modID: string): boolean
     hasShaderPackMod(): boolean

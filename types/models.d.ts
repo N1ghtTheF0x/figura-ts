@@ -1,6 +1,6 @@
 /// <reference path="textures.d.ts" />
 
-declare type FiguraModelPartRender = (tickDelta: number,renderMode: RenderModes,part: FiguraModelPart) => void
+declare type FiguraModelPartRender = (this: void,tickDelta: number,renderMode: RenderMode,part: FiguraModelPart) => void
 type IFiguraModelPartFields = {
     [x in string]: FiguraModelPart
 }
@@ -17,63 +17,63 @@ interface IFiguraModelPart
     getParent(): FiguraModelPart
     getChildren(): LuaTable<number,FiguraModelPart>
     isChildOf(part: FiguraModelPart): boolean
-    getPos(): Vector3
-    setPos(pos: Vector3): FiguraModelPart
+    getPos(): FiguraVec3
+    setPos(pos: FiguraVec3): FiguraModelPart
     setPos(x: number,y: number,z: number): FiguraModelPart
-    pos(pos: Vector3): FiguraModelPart
+    pos(pos: FiguraVec3): FiguraModelPart
     pos(x: number,y: number,z: number): FiguraModelPart
-    getAnimPos(): Vector3
-    getTruePos(): Vector3
-    getRot(): Vector3
-    setRot(rot: Vector3): FiguraModelPart
+    getAnimPos(): FiguraVec3
+    getTruePos(): FiguraVec3
+    getRot(): FiguraVec3
+    setRot(rot: FiguraVec3): FiguraModelPart
     setRot(x: number,y: number,z: number): FiguraModelPart
-    rot(rot: Vector3): FiguraModelPart
+    rot(rot: FiguraVec3): FiguraModelPart
     rot(x: number,y: number,z: number): FiguraModelPart
-    getOffsetRot(): Vector3
-    setOffsetRot(offsetRot: Vector3): FiguraModelPart
+    getOffsetRot(): FiguraVec3
+    setOffsetRot(offsetRot: FiguraVec3): FiguraModelPart
     setOffsetRot(x: number,y: number,z: number): FiguraModelPart
-    offsetRot(offsetRot: Vector3): FiguraModelPart
+    offsetRot(offsetRot: FiguraVec3): FiguraModelPart
     offsetRot(x: number,y: number,z: number): FiguraModelPart
-    getAnimRot(): Vector3
-    getTrueRot(): Vector3
-    getScale(): Vector3
-    setScale(scale: Vector3): FiguraModelPart
+    getAnimRot(): FiguraVec3
+    getTrueRot(): FiguraVec3
+    getScale(): FiguraVec3
+    setScale(scale: FiguraVec3): FiguraModelPart
     setScale(x: number,y: number,z: number): FiguraModelPart
-    scale(scale: Vector3): FiguraModelPart
+    scale(scale: FiguraVec3): FiguraModelPart
     scale(x: number,y: number,z: number): FiguraModelPart
-    getOffsetScale(): Vector3
-    setOffsetScale(scale: Vector3): FiguraModelPart
+    getOffsetScale(): FiguraVec3
+    setOffsetScale(scale: FiguraVec3): FiguraModelPart
     setOffsetScale(x: number,y: number,z: number): FiguraModelPart
-    offsetScale(scale: Vector3): FiguraModelPart
+    offsetScale(scale: FiguraVec3): FiguraModelPart
     offsetScale(x: number,y: number,z: number): FiguraModelPart
-    getAnimScale(): Vector3
-    getTrueScale(): Vector3
-    getPivot(): Vector3
-    setPivot(pivot: Vector3): FiguraModelPart
+    getAnimScale(): FiguraVec3
+    getTrueScale(): FiguraVec3
+    getPivot(): FiguraVec3
+    setPivot(pivot: FiguraVec3): FiguraModelPart
     setPivot(x: number,y: number,z: number): FiguraModelPart
-    pivot(pivot: Vector3): FiguraModelPart
+    pivot(pivot: FiguraVec3): FiguraModelPart
     pivot(x: number,y: number,z: number): FiguraModelPart
-    getOffsetPivot(): Vector3
-    setOffsetPivot(pivot: Vector3): FiguraModelPart
+    getOffsetPivot(): FiguraVec3
+    setOffsetPivot(pivot: FiguraVec3): FiguraModelPart
     setOffsetPivot(x: number,y: number,z: number): FiguraModelPart
-    getTruePivot(): Vector3
-    getPositionMatrix(): Matrix4
-    getPositionMatrixRaw(): Matrix4
-    getNormalMatrix(): Matrix3
-    getNormalMatrixRaw(): Matrix3
-    setMatrix(matrix: Matrix4): FiguraModelPart
-    matrix(matrix: Matrix4): FiguraModelPart
+    getTruePivot(): FiguraVec3
+    getPositionMatrix(): FiguraMat4
+    getPositionMatrixRaw(): FiguraMat4
+    getNormalMatrix(): FiguraMat3
+    getNormalMatrixRaw(): FiguraMat3
+    setMatrix(matrix: FiguraMat4): FiguraModelPart
+    matrix(matrix: FiguraMat4): FiguraModelPart
     getVisible(): boolean
     setVisible(visible: boolean): FiguraModelPart
     visible(visible: boolean): FiguraModelPart
-    getPrimaryRenderType(): RenderTypes
-    setPrimaryRenderType(renderType: RenderTypes): FiguraModelPart
-    getSecondaryRenderType(): RenderTypes
-    setSecondaryRenderType(renderType: RenderTypes): FiguraModelPart
-    primaryRenderType(renderType: RenderTypes): FiguraModelPart
-    secondaryRenderType(renderType: RenderTypes): FiguraModelPart
-    getPrimaryTexture(): LuaMultiReturn<[TextureTypes,string | FiguraTexture | undefined]>
-    getSecondaryTexture(): LuaMultiReturn<[TextureTypes,string | FiguraTexture | undefined]>
+    getPrimaryRenderType(): RenderType
+    setPrimaryRenderType(renderType: RenderType): FiguraModelPart
+    getSecondaryRenderType(): RenderType
+    setSecondaryRenderType(renderType: RenderType): FiguraModelPart
+    primaryRenderType(renderType: RenderType): FiguraModelPart
+    secondaryRenderType(renderType: RenderType): FiguraModelPart
+    getPrimaryTexture(): LuaMultiReturn<[TextureType,string | FiguraTexture | undefined]>
+    getSecondaryTexture(): LuaMultiReturn<[TextureType,string | FiguraTexture | undefined]>
     getPrimaryDefinedTextures(): TextureDefinition
     getSecondaryDefinedTextures(): TextureDefinition
     setPrimaryTexture(textureType: "Skin"): FiguraModelPart
@@ -89,52 +89,52 @@ interface IFiguraModelPart
     secondaryTexture(textureType: "Resource",path: string): FiguraModelPart
     secondaryTexture(textureType: "Custom",texture: FiguraTexture): FiguraModelPart
     getTextures(): LuaTable<number,FiguraTexture>
-    partToWorldMatrix(): Matrix4
-    getTextureSize(): Vector2
-    setUV(uv: Vector2): FiguraModelPart
+    partToWorldMatrix(): FiguraMat4
+    getTextureSize(): FiguraVec2
+    setUV(uv: FiguraVec2): FiguraModelPart
     setUV(u: number,v: number): FiguraModelPart
-    uv(uv: Vector2): FiguraModelPart
+    uv(uv: FiguraVec2): FiguraModelPart
     uv(u: number,v: number): FiguraModelPart
-    getUV(): Vector2
-    setUVPixels(uv: Vector2): FiguraModelPart
+    getUV(): FiguraVec2
+    setUVPixels(uv: FiguraVec2): FiguraModelPart
     setUVPixels(u: number,v: number): FiguraModelPart
-    uvPixels(uv: Vector2): FiguraModelPart
+    uvPixels(uv: FiguraVec2): FiguraModelPart
     uvPixels(u: number,v: number): FiguraModelPart
-    getUVPixels(): Vector2
-    setUVMatrix(matrix: Matrix3): FiguraModelPart
-    uvMatrix(matrix: Matrix3): FiguraModelPart
-    getUVMatrix(): Matrix3
-    setColor(color: Vector3): FiguraModelPart
+    getUVPixels(): FiguraVec2
+    setUVMatrix(matrix: FiguraMat3): FiguraModelPart
+    uvMatrix(matrix: FiguraMat3): FiguraModelPart
+    getUVMatrix(): FiguraMat3
+    setColor(color: FiguraVec3): FiguraModelPart
     setColor(r: number,g: number,b: number): FiguraModelPart
-    color(color: Vector3): FiguraModelPart
+    color(color: FiguraVec3): FiguraModelPart
     color(r: number,g: number,b: number): FiguraModelPart
-    getColor(): Vector3
-    setPrimaryColor(color: Vector3): FiguraModelPart
+    getColor(): FiguraVec3
+    setPrimaryColor(color: FiguraVec3): FiguraModelPart
     setPrimaryColor(r: number,g: number,b: number): FiguraModelPart
-    primaryColor(color: Vector3): FiguraModelPart
+    primaryColor(color: FiguraVec3): FiguraModelPart
     primaryColor(r: number,g: number,b: number): FiguraModelPart
-    getPrimaryColor(): Vector3
-    setSecondaryColor(color: Vector3): FiguraModelPart
+    getPrimaryColor(): FiguraVec3
+    setSecondaryColor(color: FiguraVec3): FiguraModelPart
     setSecondaryColor(r: number,g: number,b: number): FiguraModelPart
-    secondaryColor(color: Vector3): FiguraModelPart
+    secondaryColor(color: FiguraVec3): FiguraModelPart
     secondaryColor(r: number,g: number,b: number): FiguraModelPart
-    getSecondaryColor(): Vector3
+    getSecondaryColor(): FiguraVec3
     setOpacity(opacity: number): FiguraModelPart
     opacity(opacity: number): FiguraModelPart
     getOpacity(): number
-    setLight(light: Vector2): FiguraModelPart
+    setLight(light: FiguraVec2): FiguraModelPart
     setLight(blockLight: number,skyLight: number): FiguraModelPart
-    light(light: Vector2): FiguraModelPart
+    light(light: FiguraVec2): FiguraModelPart
     light(blockLight: number,skyLight: number): FiguraModelPart
-    getLight(): Vector2
-    setOverlay(overlay: Vector2): FiguraModelPart
+    getLight(): FiguraVec2
+    setOverlay(overlay: FiguraVec2): FiguraModelPart
     setOverlay(whiteOverlay: number,hurtOverlay: number): FiguraModelPart
-    overlay(overlay: Vector2): FiguraModelPart
+    overlay(overlay: FiguraVec2): FiguraModelPart
     overlay(whiteOverlay: number,hurtOverlay: number): FiguraModelPart
-    getOverlay(): Vector2
-    setParentType(parentType: ParentTypes): FiguraModelPart
-    parentType(parentType: ParentTypes): FiguraModelPart
-    getParentType(): ParentTypes
+    getOverlay(): FiguraVec2
+    setParentType(parentType: ParentType): FiguraModelPart
+    parentType(parentType: ParentType): FiguraModelPart
+    getParentType(): ParentType
     getType(): "GROUP" | "CUBE" | "MESH"
     overrideVanillaRot(): boolean
     overrideVanillaPos(): boolean
@@ -158,7 +158,7 @@ interface IFiguraModelPart
     removeChild(part: FiguraModelPart): FiguraModelPart
     copy(name: string): FiguraModelPart
     newPart(name: string): FiguraModelPart
-    newPart(name: string,parentType: ParentTypes): FiguraModelPart
+    newPart(name: string,parentType: ParentType): FiguraModelPart
 }
 declare type FiguraModelPart = IFiguraModelPart & IFiguraModelPartFields
 declare const models: FiguraModelPart

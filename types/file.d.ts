@@ -7,8 +7,8 @@ declare interface FileAPI
     isDirectory(path: string): boolean
     openReadStream(path: string): FiguraInputStream
     openWriteStream(path: string): FiguraOutputStream
-    readString(path: string,encoding: StringEncodings): string
-    writeString(path: string,data: string,encoding: StringEncodings): void
+    readString(path: string,encoding: StringEncoding): string
+    writeString(path: string,data: string,encoding: StringEncoding): void
     mkdir(path: string): boolean
     mkdirs(path: string): boolean
     delete(path: string): boolean

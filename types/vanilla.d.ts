@@ -1,50 +1,45 @@
-declare type VanillaModel = {
-    [item in VanillaPlayerGroups]: VanillaModelGroup
-} & {
-    [item in VanillaPlayerParts]: VanillaModelPart
-}
-declare const vanilla_model: VanillaModel
-declare interface VanillaModelGroup
+declare type VanillaModelAPI = Record<VanillaPlayerGroup,VanillaGroupPart> & Record<VanillaPlayerPart,VanillaModelPart>
+declare const vanilla_model: VanillaModelAPI
+interface IVanillaGroupPart extends VanillaPart
 {
-    setOffsetRot(offsetRot: Vector3): this
-    setOffsetRot(x: number,y: number,z: number): this
-    getOffsetRot(): Vector3
-    setOffsetScale(offsetRot: Vector3): this
-    setOffsetScale(x: number,y: number,z: number): this
-    getOffsetScale(): Vector3
-    setPos(offsetRot: Vector3): this
-    setPos(x: number,y: number,z: number): this
-    getPos(): Vector3
-    setRot(offsetRot: Vector3): this
-    setRot(x: number,y: number,z: number): this
-    getRot(): Vector3
-    setScale(offsetRot: Vector3): this
-    setScale(x: number,y: number,z: number): this
-    getScale(): Vector3
-    setVisible(visible: boolean): this
+    
+}
+declare type VanillaGroupPart = IVanillaGroupPart & Record<string,VanillaPart>
+declare interface VanillaPart
+{
     getVisible(): boolean
-}
-declare interface VanillaModelPart
-{
-    setOffsetRot(offsetRot: Vector3): this
+    setVisible(visible: boolean): this
+    visible(visible: boolean): this
+    getPos(): FiguraVec3
+    setPos(pos: FiguraVec3): this
+    setPos(x: number,y: number,z: number): this
+    pos(pos: FiguraVec3): this
+    pos(x: number,y: number,z: number): this
+    getRot(): FiguraVec3
+    setRot(rot: FiguraVec3): this
+    setRot(x: number,y: number,z: number): this
+    rot(rot: FiguraVec3): this
+    rot(x: number,y: number,z: number): this
+    getRot(): FiguraVec3
+    setOffsetRot(offsetRot: FiguraVec3): this
     setOffsetRot(x: number,y: number,z: number): this
-    getOffsetRot(): Vector3
-    setOffsetScale(offsetRot: Vector3): this
+    offsetRot(offsetRot: FiguraVec3): this
+    offsetRot(x: number,y: number,z: number): this
+    setScale(offsetRot: FiguraVec3): this
+    setScale(x: number,y: number,z: number): this
+    scale(offsetRot: FiguraVec3): this
+    scale(x: number,y: number,z: number): this
+    getScale(): FiguraVec3
+    setOffsetScale(offsetRot: FiguraVec3): this
     setOffsetScale(x: number,y: number,z: number): this
-    getOffsetScale(): Vector3
-    getOriginPos(): Vector3
-    getOriginRot(): Vector3
-    getOriginScale(): Vector3
+    offsetScale(offsetRot: FiguraVec3): this
+    offsetScale(x: number,y: number,z: number): this
+    getOffsetScale(): FiguraVec3
+}
+declare interface VanillaModelPart extends VanillaPart
+{
     getOriginVisible(): boolean
-    setPos(offsetRot: Vector3): this
-    setPos(x: number,y: number,z: number): this
-    getPos(): Vector3
-    setRot(offsetRot: Vector3): this
-    setRot(x: number,y: number,z: number): this
-    getRot(): Vector3
-    setScale(offsetRot: Vector3): this
-    setScale(x: number,y: number,z: number): this
-    getScale(): Vector3
-    setVisible(visible: boolean): this
-    getVisible(): boolean
+    getOriginRot(): FiguraVec3
+    getOriginPos(): FiguraVec3
+    getOriginScale(): FiguraVec3
 }

@@ -15,7 +15,7 @@ declare interface PlayerAPI extends LivingEntityAPI
     getShoulderEntity(right: boolean): LuaTable
     getTeamInfo(): LuaMap<string,PlayerTeam>
     getExperienceLevel(): number
-    getCooldownPercent(stack: ItemStack,delta: number): number
+    getCooldownPercent(stack: ItemStackAPI,delta: number): number
 }
 declare const player: PlayerAPI
 interface INullEntity
@@ -26,22 +26,22 @@ declare type NullEntity = INullEntity & {[x: string]: never}
 declare interface EntityAPI
 {
     isLoaded(): boolean
-    getPos(): Vector3
-    getPos(delta: number): Vector3
-    getRot(): Vector2
-    getRot(delta: number): Vector2
+    getPos(): FiguraVec3
+    getPos(delta: number): FiguraVec3
+    getRot(): FiguraVec2
+    getRot(delta: number): FiguraVec2
     getUUID(): string
     getType(): `${string}:${string}`
-    getVelocity(): Vector3
-    getLookDir(): Vector3
+    getVelocity(): FiguraVec3
+    getLookDir(): FiguraVec3
     getFrozenTicks(): number
     getMaxAir(): number
     getDimensionName(): string
-    getPose(): EntityPoses
+    getPose(): EntityPose
     getVehicle(): EntityAPI | undefined
     isOnGround(): boolean
     getEyeHeight(): number
-    getBoundingBox(): Vector3
+    getBoundingBox(): FiguraVec3
     getName(): string
     isWet(): boolean
     isInWater(): boolean
@@ -58,7 +58,7 @@ declare interface EntityAPI
     isCrouching(): boolean
     isMoving(): boolean
     isFalling(): boolean
-    getItem(index: number): ItemStack
+    getItem(index: number): ItemStackAPI
     getNBT(): LuaTable
     isOnFire(): boolean
     isAlive(): boolean
@@ -68,11 +68,11 @@ declare interface EntityAPI
     getControlledVehicle(): EntityAPI | undefined
     hasContainer(): boolean
     hasInventory(): boolean
-    getTargetedBlock(): LuaMultiReturn<[BlockStateAPI,Vector3,string]> | undefined
-    getTargetedBlock(ignoreLiquids: boolean): LuaMultiReturn<[BlockStateAPI,Vector3,string]> | undefined
-    getTargetedBlock(ignoreLiquids: boolean,distance: number): LuaMultiReturn<[BlockStateAPI,Vector3,string]> | undefined
-    getTargetedEntity(): LuaMultiReturn<[EntityAPI,Vector3]> | undefined
-    getTargetedEntity(distance: number): LuaMultiReturn<[EntityAPI,Vector3]> | undefined
+    getTargetedBlock(): LuaMultiReturn<[BlockStateAPI,FiguraVec3,string]> | undefined
+    getTargetedBlock(ignoreLiquids: boolean): LuaMultiReturn<[BlockStateAPI,FiguraVec3,string]> | undefined
+    getTargetedBlock(ignoreLiquids: boolean,distance: number): LuaMultiReturn<[BlockStateAPI,FiguraVec3,string]> | undefined
+    getTargetedEntity(): LuaMultiReturn<[EntityAPI,FiguraVec3]> | undefined
+    getTargetedEntity(distance: number): LuaMultiReturn<[EntityAPI,FiguraVec3]> | undefined
     getNearestEntity(type: string): EntityAPI | undefined
     getNearestEntity(type: string,radius: number): EntityAPI | undefined
     getVariable(): LuaTable
@@ -84,9 +84,9 @@ declare interface LivingEntityAPI extends EntityAPI
 {
     getBodyYaw(): number
     getBodyYaw(delta: number): number
-    getHeldItem(): ItemStack
-    getHeldItem(offhand: boolean): ItemStack
-    getActiveItem(): ItemStack
+    getHeldItem(): ItemStackAPI
+    getHeldItem(offhand: boolean): ItemStackAPI
+    getActiveItem(): ItemStackAPI
     getActiveItemTime(): number
     getHealth(): number
     getMaxHealth(): number
@@ -112,10 +112,10 @@ declare interface LivingEntityAPI extends EntityAPI
 }
 declare interface ViewerAPI
 {
-    getAir(): number
     getAttachCharge(): number
-    getReachDistance(): number
-    getStatusEffects(): LuaTable
-    isFlying(): boolean
     isJumping(): boolean
+    isFlying(): boolean
+    getReachDistance(): number
+    getAir(): number
+    getStatusEffects(): ReturnType<HostAPI["getStatusEffects"]>
 }

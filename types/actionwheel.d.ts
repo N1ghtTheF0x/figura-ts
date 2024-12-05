@@ -33,23 +33,23 @@ declare interface Action
     setTitle(title: string): this
     title(): this
     title(title: string): this
-    getColor(): Vector3
-    setColor(color: Vector3): this
+    getColor(): FiguraVec3
+    setColor(color: FiguraVec3): this
     setColor(r: number,g: number,b: number): this
-    color(color: Vector3): this
+    color(color: FiguraVec3): this
     color(r: number,g: number,b: number): this
-    getHoverColor(): Vector3
-    setHoverColor(color: Vector3): this
+    getHoverColor(): FiguraVec3
+    setHoverColor(color: FiguraVec3): this
     setHoverColor(r: number,g: number,b: number): this
-    hoverColor(color: Vector3): this
+    hoverColor(color: FiguraVec3): this
     hoverColor(r: number,g: number,b: number): this
-    setItem(item: ItemStack): this
+    setItem(item: ItemStackAPI): this
     setItem(item: string): this
-    item(item: ItemStack): this
+    item(item: ItemStackAPI): this
     item(item: string): this
-    setHoverItem(item: ItemStack): this
+    setHoverItem(item: ItemStackAPI): this
     setHoverItem(item: string): this
-    hoverItem(item: ItemStack): this
+    hoverItem(item: ItemStackAPI): this
     hoverItem(item: string): this
     setTexture(texture: FiguraTexture): this
     setTexture(texture: FiguraTexture,u: number,v: number): this
@@ -80,13 +80,13 @@ declare interface Action
     getToggleTitle(): string
     setToggleTitle(title: string): this
     toggleTitle(title: string): this
-    setToggleColor(color: Vector3): Action
+    setToggleColor(color: FiguraVec3): Action
     setToggleColor(r: number,g: number,b: number): Action
-    toggleColor(color: Vector3): Action
+    toggleColor(color: FiguraVec3): Action
     toggleColor(r: number,g: number,b: number): Action
-    setToggleItem(item: ItemStack): this
+    setToggleItem(item: ItemStackAPI): this
     setToggleItem(item: string): this
-    toggleItem(item: ItemStack): this
+    toggleItem(item: ItemStackAPI): this
     toggleItem(item: string): this
     setToggleTexture(texture: FiguraTexture): this
     setToggleTexture(texture: FiguraTexture,u: number,v: number): this

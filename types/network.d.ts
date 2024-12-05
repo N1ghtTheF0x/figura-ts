@@ -18,7 +18,7 @@ declare interface HttpRequestBuilder
     getUri(): string
     getMethod(): string
     getBody(): FiguraInputStream | FiguraBuffer
-    getHeaders(): LuaTable
+    getHeaders(): LuaMap<string,string>
     send(): FiguraFuture<HttpResponse>
 }
 declare interface HttpResponse
