@@ -55,6 +55,15 @@ pings.somePingFunction = function(arg)
 }
 ```
 
+## Changelog
+
+- `1.0.0`
+  - inital version
+- `1.0.1`
+  - finished current GitHub transpile
+  - renamed some functions/types to fit GitHub code
+  - fixed some functions/namepspaces
+
 ## License
 
 This project is licensed under [MIT License](./LICENSE)
