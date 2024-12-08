@@ -1,6 +1,6 @@
 {
   "name": "figura-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lua Types for the Minecraft Mod Figura",
   "types": "index.d.ts",
   "scripts": {},
@@ -21,7 +21,7 @@
   "dependencies": {
     "lua-types": "latest"
   },
-  "homepage": "https://github.com/N1ghtTheF0x/figura-ts",
+  "homepage": "https://github.com/N1ghtTheF0x/figura-ts#readme",
   "readme": "README.md",
   "repository": {
     "type": "git",

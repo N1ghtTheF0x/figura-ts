@@ -1,4 +1,4 @@
-declare type KeybindCallback<KeyBindList extends KeybindList> = (modifier: 1 | 2 | 4,keybind: FiguraKeybind<KeyBindList>) => void | boolean
+declare type KeybindCallback<KeyBindList extends KeybindList> = (this: void,modifier: 1 | 2 | 4,keybind: FiguraKeybind<KeyBindList>) => void | boolean
 declare interface FiguraKeybind<K extends KeybindList = KeybindList>
 {
     press: KeybindCallback<K>

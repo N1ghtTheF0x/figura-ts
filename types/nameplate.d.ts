@@ -1,3 +1,5 @@
+/// <reference path="minecraft/text.d.ts" />
+
 declare interface NameplateAPI
 {
     readonly CHAT: NameplateCustomization

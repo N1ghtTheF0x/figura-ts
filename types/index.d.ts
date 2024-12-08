@@ -1,4 +1,6 @@
 /// <reference types="lua-types/5.2" />
+// Minecraft
+/// <reference path="minecraft.d.ts" />
 // Enums
 /// <reference path="enums.d.ts" />
 // Action Wheel

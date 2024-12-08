@@ -1,5 +1,6 @@
 /// <reference path="map.d.ts" />
 
+/** @noSelf */
 declare interface WorldAPI
 {
     getBiome(pos: FiguraVec3): BiomeAPI

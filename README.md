@@ -44,17 +44,6 @@ events.entity_init.register(someFunc,someName) // Does not work
 events.ENTITY_INIT.register(someFunc,someName) // works
 ```
 
-### creating ping functions
-
-For the time being you have to cast the parameters of your ping function until I figure out how not to do that
-
-```typescript
-pings.somePingFunction = function(arg)
-{
-    someFunction(arg as boolean)
-}
-```
-
 ## Changelog
 
 - `1.0.0`
@@ -63,6 +52,10 @@ pings.somePingFunction = function(arg)
   - finished current GitHub transpile
   - renamed some functions/types to fit GitHub code
   - fixed some functions/namepspaces
+- `1.0.2`
+  - fixed some methods with no `this: void` but are required
+  - ping functions do not need casting anymore
+  - added some Minecraft interfaces from their wiki for nameplates
 
 ## License
 

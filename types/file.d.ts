@@ -12,6 +12,6 @@ declare interface FileAPI
     mkdir(path: string): boolean
     mkdirs(path: string): boolean
     delete(path: string): boolean
-    list(path: string): LuaTable<number,string>
+    list(path: string): LuaTable<number,string> | undefined
 }
 declare const file: FileAPI

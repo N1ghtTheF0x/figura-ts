@@ -1,7 +1,7 @@
-declare type NBTByteArray = LuaTable<number,number>
-declare type NBTList<T> = LuaTable<number,T>
-declare type NBTCompound<T> = LuaTable<string,T>
-declare type NBTVector3 = LuaTable<0 | 1 | 2,number>
+declare type NBTByteArray = Array<number>
+declare type NBTList<T> = Array<T>
+declare type NBTCompound<T> = Record<string,T>
+declare type NBTVector3 = Record<0 | 1 | 2,number>
 
 declare interface AvatarNBT
 {
