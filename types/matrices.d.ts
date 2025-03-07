@@ -1,10 +1,10 @@
-declare interface MatricesAPI
+declare interface FiguraMatrices
 {
-    mat2(this: void,): FiguraMat2
+    mat2(this: void): FiguraMat2
     mat2(this: void,col1: FiguraVec2,col2: FiguraVec2): FiguraMat2
-    mat3(this: void,): FiguraMat3
+    mat3(this: void): FiguraMat3
     mat3(this: void,col1: FiguraVec3,col2: FiguraVec3,col3: FiguraVec3): FiguraMat3
-    mat4(this: void,): FiguraMat4
+    mat4(this: void): FiguraMat4
     mat4(this: void,col1: FiguraVec4,col2: FiguraVec4,col3: FiguraVec4,col4: FiguraVec4): FiguraMat4
     rotation2(this: void,angle: number): FiguraMat2
     rotation3(this: void,vec: FiguraVec3): FiguraMat3
@@ -27,18 +27,18 @@ declare interface MatricesAPI
     translate4(this: void,vec: FiguraVec3): FiguraMat4
     translate4(this: void,x: number,y: number,z: number): FiguraMat4
 }
-declare const matrices: MatricesAPI
-type IMatrixColumns<Numbers extends number,Vector extends FiguraVector> = {
+declare const matrices: FiguraMatrices
+type IMatrixColumns<Numbers extends number,Vector extends FiguraAnyVector> = {
     [x in `${Numbers}` | `c${Numbers}`]: Vector
 }
-type IMatrixRows<Numbers extends number,Vector extends FiguraVector> = {
+type IMatrixRows<Numbers extends number,Vector extends FiguraAnyVector> = {
     [x in `r${Numbers}`]: Vector
 }
 type IMatrixValues<Columns extends number,Rows extends number> = {
     [x in `v${Columns}${Rows}`]: number
 }
-type IMatrixFields<Columns extends number,Rows extends number,Vector extends FiguraVector> = IMatrixColumns<Columns,Vector> & IMatrixRows<Rows,Vector> & IMatrixValues<Columns,Rows>
-type IMatrix<Itself extends FiguraMatrices,Columns extends number,Rows extends number,Vector extends FiguraVector> = {
+type IMatrixFields<Columns extends number,Rows extends number,Vector extends FiguraAnyVector> = IMatrixColumns<Columns,Vector> & IMatrixRows<Rows,Vector> & IMatrixValues<Columns,Rows>
+type IMatrix<Itself extends FiguraAnyMatrix,Columns extends number,Rows extends number,Vector extends FiguraAnyVector> = {
     ADD: LuaAdditionMethod<Itself,Itself>
     SUB: LuaSubtractionMethod<Itself,Itself>
     MUL: LuaMultiplicationMethod<Itself,Itself> | LuaMultiplicationMethod<Vector,Vector> | LuaMultiplicationMethod<number,Itself>
@@ -127,4 +127,4 @@ declare interface FiguraMat4 extends IMatrix<FiguraMat4,1 | 2 | 3 | 4,1 | 2 | 3 
     applyDir(vec: FiguraVec3): FiguraVec3
     applyDir(x: number,y: number,z: number): FiguraVec3
 }
-declare type FiguraMatrices = FiguraMat2 | FiguraMat3 | FiguraMat4
+declare type FiguraAnyMatrix = FiguraMat2 | FiguraMat3 | FiguraMat4

@@ -1,15 +1,15 @@
-declare interface NetworkAPI
+declare interface FiguraNet
 {
     isNetworkingAllowed(): boolean
     isLinkAllowed(link: string): boolean
-    readonly http: HttpAPI
+    readonly http: FiguraHttp
 }
-declare const net: NetworkAPI
-declare interface HttpAPI
+declare const net: FiguraNet
+declare interface FiguraHttp
 {
-    request(uri: string): HttpRequestBuilder
+    request(uri: string): FiguraHttpRequestBuilder
 }
-declare interface HttpRequestBuilder
+declare interface FiguraHttpRequestBuilder
 {
     uri(uri: string): this
     method(method: string): this
@@ -19,9 +19,9 @@ declare interface HttpRequestBuilder
     getMethod(): string
     getBody(): FiguraInputStream | FiguraBuffer
     getHeaders(): LuaMap<string,string>
-    send(): FiguraFuture<HttpResponse>
+    send(): FiguraFuture<FiguraHttpResponse>
 }
-declare interface HttpResponse
+declare interface FiguraHttpResponse
 {
     getData(): FiguraInputStream
     getResponseCode(): number

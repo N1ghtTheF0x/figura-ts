@@ -1,7 +1,7 @@
 /// <reference path="chat.d.ts" />
 /// <reference path="status.d.ts" />
 
-declare interface HostAPI
+declare interface FiguraHost
 {
     unlockCursor: boolean
     isHost(): boolean
@@ -23,18 +23,18 @@ declare interface HostAPI
     sendChatMessage(message: string): this
     sendChatCommand(command: string): this
     appendChatHistory(message: string): this
-    getChatMessage(index: number): ChatMessage | undefined
+    getChatMessage(index: number): FiguraChatMessage | undefined
     setChatMessage(index: number): this
     setChatMessage(index: number,newMessage: string): this
     setChatMessage(index: number,newMessage: string,backgroundColor: FiguraVec3): this
     swingArm(): this
     swingArm(offhand: boolean): this
-    getSlot(slot: string): ItemStackAPI | undefined
-    getSlot(slot: number): ItemStackAPI | undefined
+    getSlot(slot: string): FiguraItemStack | undefined
+    getSlot(slot: number): FiguraItemStack | undefined
     setSlot(slot: string): this
     setSlot(slot: number): this
     setSlot(slot: string,item: string): this
-    setSlot(slot: number,item: ItemStackAPI): this
+    setSlot(slot: number,item: FiguraItemStack): this
     setBadge(index: number,value: boolean,pride: boolean): this
     badge(index: number,value: boolean,pride: boolean): this
     getChatColor(): number | undefined
@@ -47,13 +47,13 @@ declare interface HostAPI
     chatText(text: string): this
     getScreen(): string | undefined
     getScreenSlotCount(): number | undefined
-    getScreenSlot(slot: string): ItemStackAPI | undefined
-    getScreenSlot(slot: number): ItemStackAPI | undefined
+    getScreenSlot(slot: string): FiguraItemStack | undefined
+    getScreenSlot(slot: number): FiguraItemStack | undefined
     isChatOpen(): boolean
     isContainerOpen(): boolean
     screenshot(name: string): FiguraTexture
     isAvatarUploaded(): boolean
-    getStatusEffects(): LuaTable<number,StatusEffect>
+    getStatusEffects(): LuaTable<number,FiguraStatusEffect>
     getClipboard(): string | undefined
     setClipboard(text: string): this
     getAttackCharge(): number
@@ -61,10 +61,10 @@ declare interface HostAPI
     isFlying(): boolean
     getReachDistance(): number
     getAir(): number
-    getPickBlock(): LuaMultiReturn<[BlockStateAPI,FiguraVec3,string]> | undefined
-    getPickEntity(): EntityAPI | undefined
+    getPickBlock(): LuaMultiReturn<[FiguraBlockState,FiguraVec3,string]> | undefined
+    getPickEntity(): FiguraEntity | undefined
     isChatVerified(): boolean
     writeToLog(string: string): void
     warnToLog(string: string): void
 }
-declare const host: HostAPI
+declare const host: FiguraHost

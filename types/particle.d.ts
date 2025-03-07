@@ -1,16 +1,16 @@
-declare interface ParticleAPI
+declare interface FiguraParticles
 {
-    newParticle(name: string,pos: FiguraVec3): LuaParticle
-    newParticle(name: string,pos: FiguraVec3,vel: FiguraVec3): LuaParticle
-    newParticle(name: string,posX: number,posY: number,posZ: number): LuaParticle
-    newParticle(name: string,pos: FiguraVec3,velX: number,velY: number,velZ: number): LuaParticle
-    newParticle(name: string,posX: number,posY: number,posZ: number,vel: FiguraVec3): LuaParticle
-    newParticle(name: string,posX: number,posY: number,posZ: number,velX: number,velY: number,velZ: number): LuaParticle
+    newParticle(name: string,pos: FiguraVec3): FiguraParticle
+    newParticle(name: string,pos: FiguraVec3,vel: FiguraVec3): FiguraParticle
+    newParticle(name: string,posX: number,posY: number,posZ: number): FiguraParticle
+    newParticle(name: string,pos: FiguraVec3,velX: number,velY: number,velZ: number): FiguraParticle
+    newParticle(name: string,posX: number,posY: number,posZ: number,vel: FiguraVec3): FiguraParticle
+    newParticle(name: string,posX: number,posY: number,posZ: number,velX: number,velY: number,velZ: number): FiguraParticle
     removeParticles(): this
     isPresent(id: string): boolean
 }
-declare const particles: ParticleAPI & {[name: string]: LuaParticle}
-declare interface LuaParticle
+declare const particles: FiguraParticles & {[name: string]: FiguraParticle}
+declare interface FiguraParticle
 {
     spawn(): this
     remove(): this

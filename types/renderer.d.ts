@@ -1,4 +1,4 @@
-declare interface RendererAPI
+declare interface FiguraRenderer
 {
     renderFire: boolean
     renderVehicle: boolean
@@ -101,4 +101,4 @@ declare interface RendererAPI
     rootRotationAllowed(bool: boolean): this
     getRootRotationAllowed(): boolean
 }
-declare const renderer: RendererAPI
+declare const renderer: FiguraRenderer

@@ -3,7 +3,7 @@ declare namespace math
 {
     export const playerScale: number
     export const worldScale: number
-    export function lerp<T extends FiguraVector | FiguraMatrices | number>(this: void,a: T,b: T,t: number): T
+    export function lerp<T extends FiguraAnyVector | FiguraAnyMatrix | number>(this: void,a: T,b: T,t: number): T
     export function clamp(this: void,value: number,min: number,max: number): number
     export function round(this: void,value: number): number
     export function map(this: void,value: number,oldMin: number,oldMax: number,newMin: number,newMax: number): number

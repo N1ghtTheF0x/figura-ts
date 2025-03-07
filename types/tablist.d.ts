@@ -1,13 +1,14 @@
-declare interface TabList
+declare interface FiguraTabList
 {
     header?: string
-    headerJson?: TabList.Header
+    headerJson?: FiguraTabList.Header
     players: LuaTable<number, string>
     footer?: string
-    footerJson?: TabList.Footer
+    footerJson?: FiguraTabList.Footer
 }
-declare namespace TabList
+declare namespace FiguraTabList
 {
+    // TODO: what does Header and Footer contain?
     export interface Header
     {
 

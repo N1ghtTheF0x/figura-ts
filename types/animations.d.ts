@@ -1,4 +1,4 @@
-declare interface Animation
+declare interface FiguraAnimation
 {
     isPlaying(): boolean
     isPaused(): boolean
@@ -57,13 +57,14 @@ declare interface Animation
     readonly name: string
 }
 // animations[model][animationName] = Animation
-declare type ModelAnimations = Record<string,Animation>
-interface IAnimationAPI
+declare type FiguraModelAnimations = Record<string,FiguraAnimation>
+interface IFiguraAnimations
 {
-    get: LuaTableGetMethod<string,ModelAnimations>
-    getAnimations(): LuaTable<number,Animation>
-    getPlaying(): LuaTable<number,Animation>
+    get: LuaTableGetMethod<string,FiguraModelAnimations>
+    getAnimations(): LuaTable<number,FiguraAnimation>
+    getPlaying(): LuaTable<number,FiguraAnimation>
+    getPlaying(hold: boolean): LuaTable<number,FiguraAnimation>
     stopAll(): this
 }
-declare type AnimationAPI = IAnimationAPI & Record<string,ModelAnimations>
-declare const animations: AnimationAPI
+declare type FiguraAnimations = IFiguraAnimations & Record<string,FiguraModelAnimations>
+declare const animations: FiguraAnimations

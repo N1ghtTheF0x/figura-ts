@@ -1,4 +1,4 @@
-declare interface MapData
+declare interface FiguraMapData
 {
     center_x: number
     center_y: number
@@ -6,7 +6,7 @@ declare interface MapData
     scale: number
 }
 
-declare namespace MapData
+declare namespace FiguraMapData
 {
     export interface Decoration
     {

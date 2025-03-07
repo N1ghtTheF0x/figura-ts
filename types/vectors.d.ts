@@ -31,7 +31,7 @@ declare namespace vectors
     export function worldToScreenSpace(this: void,vec: FiguraVec3): FiguraVec4
     export function worldToScreenSpace(this: void,x: number,y: number,z: number): FiguraVec4
 }
-interface IVector<Itself extends FiguraVector,Matrix extends FiguraMatrices>
+interface IFiguraVector<Itself extends FiguraAnyVector,Matrix extends FiguraAnyMatrix>
 {
     ADD: LuaAdditionMethod<Itself | number,Itself>
     SUB: LuaSubtractionMethod<Itself | number,Itself>
@@ -42,7 +42,7 @@ interface IVector<Itself extends FiguraVector,Matrix extends FiguraMatrices>
     LEN: LuaLengthMethod<number>
     LT: LuaLessThanMethod<Itself,boolean>
 }
-declare interface FiguraVec2 extends IVector<FiguraVec2,FiguraMat2>
+declare interface FiguraVec2 extends IFiguraVector<FiguraVec2,FiguraMat2>
 {
     [1]: number
     [2]: number
@@ -83,7 +83,7 @@ declare interface FiguraVec2 extends IVector<FiguraVec2,FiguraMat2>
     augmented(): FiguraVec3
     augmented(value: number): FiguraVec3
 }
-declare interface FiguraVec3 extends IVector<FiguraVec3,FiguraMat3>
+declare interface FiguraVec3 extends IFiguraVector<FiguraVec3,FiguraMat3>
 {
     [1]: number
     [2]: number
@@ -129,7 +129,7 @@ declare interface FiguraVec3 extends IVector<FiguraVec3,FiguraMat3>
     cross(other: FiguraVec3): this
     crossed(other: FiguraVec3): this
 }
-declare interface FiguraVec4 extends IVector<FiguraVec4,FiguraMat4>
+declare interface FiguraVec4 extends IFiguraVector<FiguraVec4,FiguraMat4>
 {
     [1]: number
     [2]: number
@@ -174,4 +174,4 @@ declare interface FiguraVec4 extends IVector<FiguraVec4,FiguraMat4>
     ceil(): this
     applyFunc(func: (value: number,index: 1 | 2 | 3 | 4) => number): this
 }
-declare type FiguraVector = FiguraVec2 | FiguraVec3 | FiguraVec4
+declare type FiguraAnyVector = FiguraVec2 | FiguraVec3 | FiguraVec4

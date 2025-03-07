@@ -1,9 +1,9 @@
-declare interface DataAPI
+declare interface FiguraData
 {
     createBuffer(): FiguraBuffer
     createBuffer(capacity: number): FiguraBuffer
 }
-declare const data: DataAPI
+declare const data: FiguraData
 declare interface FiguraBuffer
 {
     read(): number
@@ -81,9 +81,9 @@ declare interface FiguraOutputStream
     flush(): void
     close(): void
 }
-declare interface ResourcesAPI
+declare interface FiguraResources
 {
     get(path: string): FiguraInputStream
     getPaths(): LuaTable<number,string>
 }
-declare const resources: ResourcesAPI
+declare const resources: FiguraResources

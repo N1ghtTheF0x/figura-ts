@@ -1,12 +1,12 @@
-declare type KeybindCallback<KeyBindList extends KeybindList> = (this: void,modifier: 1 | 2 | 4,keybind: FiguraKeybind<KeyBindList>) => void | boolean
+declare type FiguraKeybindCallback<K extends KeybindList> = (this: void,modifier: 1 | 2 | 4,keybind: FiguraKeybind<K>) => void | boolean
 declare interface FiguraKeybind<K extends KeybindList = KeybindList>
 {
-    press: KeybindCallback<K>
-    release: KeybindCallback<K>
-    setOnPress(func: KeybindCallback<K>): this
-    onPress(func: KeybindCallback<K>): this
-    setOnRelease(func: KeybindCallback<K>): this
-    onRelease(func: KeybindCallback<K>): this
+    press: FiguraKeybindCallback<K>
+    release: FiguraKeybindCallback<K>
+    setOnPress(func: FiguraKeybindCallback<K>): this
+    onPress(func: FiguraKeybindCallback<K>): this
+    setOnRelease(func: FiguraKeybindCallback<K>): this
+    onRelease(func: FiguraKeybindCallback<K>): this
     setKey<Key extends KeybindList>(key: Key): FiguraKeybind<Key>
     key<Key extends KeybindList>(key: Key): FiguraKeybind<Key>
     isDefault(): boolean
@@ -22,7 +22,7 @@ declare interface FiguraKeybind<K extends KeybindList = KeybindList>
     setGUI(bool: boolean): this
     gui(bool: boolean): this
 }
-declare interface KeybindsAPI
+declare interface FiguraKeybinds
 {
     newKeybind(name: string): FiguraKeybind
     newKeybind<Key extends KeybindList>(name: string,key: Key): FiguraKeybind<Key>
@@ -31,4 +31,4 @@ declare interface KeybindsAPI
     getVanillaKey(id: KeyID): KeybindList
     getKeybinds(): LuaTable<string,FiguraKeybind>
 }
-declare const keybinds: KeybindsAPI
+declare const keybinds: FiguraKeybinds

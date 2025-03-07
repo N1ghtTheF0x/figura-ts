@@ -1,4 +1,4 @@
-declare interface FileAPI
+declare interface FiguraFile
 {
     isPathAllowed(path: string): boolean
     allowed(): boolean
@@ -14,4 +14,4 @@ declare interface FileAPI
     delete(path: string): boolean
     list(path: string): LuaTable<number,string> | undefined
 }
-declare const file: FileAPI
+declare const file: FiguraFile

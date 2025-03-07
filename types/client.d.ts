@@ -1,7 +1,7 @@
 /// <reference path="scoreboard.d.ts" />
 /// <reference path="tablist.d.ts" />
 
-declare interface ClientAPI
+declare interface FiguraClient
 {
     getFPS(): number
     getFPSString(): string
@@ -49,8 +49,8 @@ declare interface ClientAPI
     generateUUID(): LuaMultiReturn<[number,number,number,number]>
     intUUIDToString(a: number,b: number,c: number,d: number): string
     uuidToIntArray(uuid: string): LuaMultiReturn<[number,number,number,number]>
-    getViewer(): ViewerAPI
-    getCameraEntity(): EntityAPI
+    getViewer(): FiguraViewer
+    getCameraEntity(): FiguraEntity
     isIntegratedServer(): boolean
     getServerData(): LuaTable
     getDate(): LuaTable
@@ -58,13 +58,13 @@ declare interface ClientAPI
     getActionBar(): unknown | undefined
     getTitle(): unknown | undefined
     getSubtitle(): unknown | undefined
-    getScoreboard(): LuaMap<string,LuaMap<string,ScoreboardObjective>>
+    getScoreboard(): LuaMap<string,LuaMap<string,FiguraScoreboardObjective>>
     listAtlases(): LuaTable<number,string>
-    getAtlas(path: string): TextureAtlas
-    getTabList(): TabList
+    getAtlas(path: string): FiguraTextureAtlas
+    getTabList(): FiguraTabList
     getTranslatedString(text: string): string
     getTranslatedString(text: string,args: unknown): string
     getRegistry(registryName: Registries): LuaTable<number,string>
     getEnum(enumName: string): LuaTable<number,string>
 }
-declare const client: ClientAPI
+declare const client: FiguraClient

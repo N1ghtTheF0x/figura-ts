@@ -1,4 +1,4 @@
-declare interface StatusEffect
+declare interface FiguraStatusEffect
 {
     name: string
     amplifier: number

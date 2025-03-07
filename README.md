@@ -44,6 +44,10 @@ events.entity_init.register(someFunc,someName) // Does not work
 events.ENTITY_INIT.register(someFunc,someName) // works
 ```
 
+## To-Do
+
+- figure out what `FiguraTabList.Header` and `FiguraTabList.Footer` properties have
+
 ## Changelog
 
 - `1.0.0`
@@ -56,6 +60,9 @@ events.ENTITY_INIT.register(someFunc,someName) // works
   - fixed some methods with no `this: void` but are required
   - ping functions do not need casting anymore
   - added some Minecraft interfaces from their wiki for nameplates
+- `1.1.0`
+  - Changed all type names to start with `Figura` to not cause any issues with other libraries (maybe)
+  - updated for Figura 0.1.5
 
 ## License
 

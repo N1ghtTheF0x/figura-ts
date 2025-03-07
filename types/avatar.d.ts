@@ -1,9 +1,9 @@
 /// <reference path="nbt.d.ts" />
 
-declare interface AvatarAPI<Data = {}>
+declare interface FiguraAvatar<Data = {}>
 {
-    getNBT(): AvatarNBT
-    store<Key extends string,Value>(key: Key,value: Value): AvatarAPI<Data & {[x in Key]: Value}>
+    getNBT(): FiguraAvatar
+    store<Key extends string,Value>(key: Key,value: Value): FiguraAvatar<Data & {[x in Key]: Value}>
     getUUID(): string
     getCurrentInstruction(): number
     getColor(): string
@@ -56,4 +56,4 @@ declare interface AvatarAPI<Data = {}>
     canUseCustomSounds(): boolean
     canHaveCustomSkull(): boolean
 }
-declare const avatar: AvatarAPI
+declare const avatar: FiguraAvatar

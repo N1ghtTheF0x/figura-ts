@@ -1,19 +1,19 @@
 /// <reference path="map.d.ts" />
 
 /** @noSelf */
-declare interface WorldAPI
+declare interface FiguraWorld
 {
-    getBiome(pos: FiguraVec3): BiomeAPI
-    getBiome(x: number,y: number,z: number): BiomeAPI
-    getBlockState(pos: FiguraVec3): BlockStateAPI
-    getBlockState(x: number,y: number,z: number): BlockStateAPI
+    getBiome(pos: FiguraVec3): FiguraBiome
+    getBiome(x: number,y: number,z: number): FiguraBiome
+    getBlockState(pos: FiguraVec3): FiguraBlockState
+    getBlockState(x: number,y: number,z: number): FiguraBlockState
     isChunkLoaded(pos: FiguraVec3): boolean
     isChunkLoaded(x: number,y: number,z: number): boolean
-    getBlocks(min: FiguraVec3,max: FiguraVec3): LuaTable<number,BlockStateAPI>
-    getBlocks(minX: number,minY: number,minZ: number,max: FiguraVec3): LuaTable<number,BlockStateAPI>
-    getBlocks(min: FiguraVec3,maxX: number,maxY: number,maxZ: number): LuaTable<number,BlockStateAPI>
-    getBlocks(minX: number,minY: number,minZ: number,maxX: number,maxY: number,maxZ: number): LuaTable<number,BlockStateAPI>
-    getMapData(id: string): LuaMap<string,MapData>
+    getBlocks(min: FiguraVec3,max: FiguraVec3): LuaTable<number,FiguraBlockState>
+    getBlocks(minX: number,minY: number,minZ: number,max: FiguraVec3): LuaTable<number,FiguraBlockState>
+    getBlocks(min: FiguraVec3,maxX: number,maxY: number,maxZ: number): LuaTable<number,FiguraBlockState>
+    getBlocks(minX: number,minY: number,minZ: number,maxX: number,maxY: number,maxZ: number): LuaTable<number,FiguraBlockState>
+    getMapData(id: string): LuaMap<string,FiguraMapData>
     getRedstonePower(pos: FiguraVec3): number
     getRedstonePower(x: number,y: number,z: number): number
     getStrongRedstonePower(pos: FiguraVec3): number
@@ -41,22 +41,23 @@ declare interface WorldAPI
     isOpenSky(pos: FiguraVec3): boolean
     isOpenSky(x: number,y: number,z: number): boolean
     getDimension(): string
-    getPlayers(): LuaMap<string,EntityAPI>
-    getEntities(pos1: FiguraVec3,pos2: FiguraVec3): LuaTable<number,EntityAPI>
-    getEntity(uuid: string): EntityAPI
+    getPlayers(): LuaMap<string,FiguraEntity>
+    getEntities(pos1: FiguraVec3,pos2: FiguraVec3): LuaTable<number,FiguraEntity>
+    getEntities(x1: number,y1: number,z1: number,x2: number,y2: number,z2: number): LuaTable<number,FiguraEntity>
+    getEntity(uuid: string): FiguraEntity
     avatarVars(): LuaTable<string,LuaTable>
-    newBlock(block: string): BlockStateAPI
-    newBlock(block: string,pos: FiguraVec3): BlockStateAPI
-    newBlock(block: string,x: number,y: number,z: number): BlockStateAPI
-    newItem(item: string): ItemStackAPI
-    newItem(item: string,count: number): ItemStackAPI
-    newItem(item: string,count: number,damage: number): ItemStackAPI
+    newBlock(block: string): FiguraBlockState
+    newBlock(block: string,pos: FiguraVec3): FiguraBlockState
+    newBlock(block: string,x: number,y: number,z: number): FiguraBlockState
+    newItem(item: string): FiguraItemStack
+    newItem(item: string,count: number): FiguraItemStack
+    newItem(item: string,count: number,damage: number): FiguraItemStack
     exists(): boolean
     getBuildHeight(): LuaMultiReturn<[number,number]>
     getSpawnPoint(): FiguraVec3
 }
-declare const world: WorldAPI
-declare interface BiomeAPI
+declare const world: FiguraWorld
+declare interface FiguraBiome
 {
     readonly id: string
     getPos(): FiguraVec3
@@ -77,7 +78,7 @@ declare interface BiomeAPI
     isHot(): boolean
     isCold(): boolean
 }
-declare interface BlockStateAPI
+declare interface FiguraBlockState
 {
     readonly id: string
     readonly properties: LuaTable
@@ -104,7 +105,7 @@ declare interface BlockStateAPI
     getVelocityMultiplier(): number
     getJumpVelocityMultiplier(): number
     getBlastResistance(): number
-    asItem(): ItemStackAPI
+    asItem(): FiguraItemStack
     getTags(): LuaTable<number,string>
     hasCollision(): boolean
     getCollisionShape(): LuaTable<number,LuaTable<number,FiguraVec3>>
@@ -116,12 +117,12 @@ declare interface BlockStateAPI
     getTextures(): LuaMap<string,LuaSet<string>>
     isAir(): boolean
 }
-declare interface ItemStackAPI
+declare interface FiguraItemStack
 {
     readonly id: string
     readonly tag: LuaTable
     getID(): string
-    getTag(): ItemStackAPI["tag"]
+    getTag(): FiguraItemStack["tag"]
     getCount(): number
     getDamage(): number
     getPopTime(): number
@@ -144,5 +145,5 @@ declare interface ItemStackAPI
     isTool(): boolean
     getEquipmentSlot(): string
     copy(): this
-    getBlockstate(): BlockStateAPI
+    getBlockstate(): FiguraBlockState
 }

@@ -1,4 +1,4 @@
-declare interface ScoreboardObjective
+declare interface FiguraScoreboardObjective
 {
     name: string
     display_name: string
@@ -6,7 +6,7 @@ declare interface ScoreboardObjective
     render_type: string
     scores: LuaTable<string,number>
 }
-declare interface PlayerTeam
+declare interface FiguraPlayerTeam
 {
     name: string
     display_name: string

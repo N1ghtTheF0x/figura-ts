@@ -3,17 +3,17 @@ declare type NBTList<T> = Array<T>
 declare type NBTCompound<T> = Record<string,T>
 declare type NBTVector3 = Record<0 | 1 | 2,number>
 
-declare interface AvatarNBT
+declare interface FiguraAvatar
 {
-    metadata: AvatarNBT.Metadata
+    metadata: FiguraAvatar.Metadata
     resources?: NBTCompound<Record<number,number>>
-    animations?: NBTList<AvatarNBT.Animation>
+    animations?: NBTList<FiguraAvatar.Animation>
     sounds?: NBTCompound<NBTByteArray>
     scripts?: NBTCompound<NBTByteArray>
-    textures?: AvatarNBT.Textures
-    models?: AvatarNBT.Model
+    textures?: FiguraAvatar.Textures
+    models?: FiguraAvatar.Model
 }
-declare namespace AvatarNBT
+declare namespace FiguraAvatar
 {
     export interface Metadata
     {

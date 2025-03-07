@@ -1,4 +1,4 @@
-declare interface TextureDefinition
+declare interface FiguraTextureDefinition
 {
     main?: FiguraTexture
     emissive?: FiguraTexture
@@ -28,14 +28,14 @@ declare interface FiguraTexture
     applyFunc(x: number,y: number,width: number,height: number,func: FiguraTextureApply): this
     applyMatrix(x: number,y: number,width: number,height: number,matrix: FiguraMat4,clip: boolean): this
 }
-declare interface TextureAtlas
+declare interface FiguraTextureAtlas
 {
     listSprites(): LuaTable<number,string>
     getSpriteUV(path: string): FiguraVec4
     getWidth(): number
     getHeight(): number
 }
-declare interface ITexturesAPI
+declare interface IFiguraTextures
 {
     newTexture(name: string,width: number,height: number): FiguraTexture
     read(name: string,base64Text: string): FiguraTexture
@@ -45,5 +45,5 @@ declare interface ITexturesAPI
     getTextures(): LuaTable<number,FiguraTexture>
     fromVanilla(name: string,path: string): FiguraTexture
 }
-declare type TexturesAPI = ITexturesAPI & Record<string,FiguraTexture>
-declare const textures: TexturesAPI
+declare type FiguraTextures = IFiguraTextures & Record<string,FiguraTexture>
+declare const textures: FiguraTextures

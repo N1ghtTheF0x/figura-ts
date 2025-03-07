@@ -1,18 +1,18 @@
 /// <reference path="minecraft/text.d.ts" />
 
-declare interface NameplateAPI
+declare interface FiguraNameplate
 {
-    readonly CHAT: NameplateCustomization
-    readonly ENTITY: EntityNameplateCustomization
-    readonly LIST: NameplateCustomization
-    readonly ALL: NameplateCustomizationGroup
+    readonly CHAT: FiguraNameplateCustomization
+    readonly ENTITY: FiguraEntityNameplateCustomization
+    readonly LIST: FiguraNameplateCustomization
+    readonly ALL: FiguraNameplateCustomizationGroup
 }
-declare interface NameplateCustomization
+declare interface FiguraNameplateCustomization
 {
     getText(): string
     setText(text: string): this
 }
-declare interface EntityNameplateCustomization extends NameplateCustomization
+declare interface FiguraEntityNameplateCustomization extends FiguraNameplateCustomization
 {
     getPivot(): FiguraVec3
     setPivot(pivot: FiguraVec3): this
@@ -53,8 +53,8 @@ declare interface EntityNameplateCustomization extends NameplateCustomization
     setShadow(shadow: boolean): this
     shadow(shadow: boolean): this
 }
-declare interface NameplateCustomizationGroup
+declare interface FiguraNameplateCustomizationGroup
 {
     setText(text: string): this
 }
-declare const nameplate: NameplateAPI
+declare const nameplate: FiguraNameplate

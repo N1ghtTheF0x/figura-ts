@@ -74,8 +74,8 @@ interface IFiguraModelPart
     secondaryRenderType(renderType: RenderType): FiguraModelPart
     getPrimaryTexture(): LuaMultiReturn<[TextureType,string | FiguraTexture | undefined]>
     getSecondaryTexture(): LuaMultiReturn<[TextureType,string | FiguraTexture | undefined]>
-    getPrimaryDefinedTextures(): TextureDefinition
-    getSecondaryDefinedTextures(): TextureDefinition
+    getPrimaryDefinedTextures(): FiguraTextureDefinition
+    getSecondaryDefinedTextures(): FiguraTextureDefinition
     setPrimaryTexture(textureType: "Skin"): FiguraModelPart
     setPrimaryTexture(textureType: "Resource",path: string): FiguraModelPart
     setPrimaryTexture(textureType: "Custom",texture: FiguraTexture): FiguraModelPart
@@ -139,20 +139,20 @@ interface IFiguraModelPart
     overrideVanillaRot(): boolean
     overrideVanillaPos(): boolean
     overrideVanillaScale(): boolean
-    newText(taskName: string): TextTask
-    newItem(taskName: string): ItemTask
-    newBlock(taskName: string): BlockTask
-    newSprite(taskName: string): SpriteTask
-    newEntity(taskName: string): EntityTask
-    addTask<R extends RenderTask>(renderTask: R): R
-    getTask(): LuaTable<string,RenderTask>
-    getTask(taskName: string): RenderTask
+    newText(taskName: string): FiguraTextTask
+    newItem(taskName: string): FiguraItemTask
+    newBlock(taskName: string): FiguraBlockTask
+    newSprite(taskName: string): FiguraSpriteTask
+    newEntity(taskName: string): FiguraEntityTask
+    addTask<R extends FiguraRenderTask>(renderTask: R): R
+    getTask(): LuaTable<string,FiguraRenderTask>
+    getTask(taskName: string): FiguraRenderTask
     removeTask(): FiguraModelPart
     removeTask(taskName: string): FiguraModelPart
-    removeTask(renderTask: RenderTask): FiguraModelPart
+    removeTask(renderTask: FiguraRenderTask): FiguraModelPart
     remove(): FiguraModelPart
-    getVertices(textureID: string): LuaTable<number,Vertex>
-    getAllVertices(): LuaMap<string,LuaTable<number,Vertex>>
+    getVertices(textureID: string): LuaTable<number,FiguraVertex>
+    getAllVertices(): LuaMap<string,LuaTable<number,FiguraVertex>>
     moveTo(part: FiguraModelPart): FiguraModelPart
     addChild(part: FiguraModelPart): FiguraModelPart
     removeChild(part: FiguraModelPart): FiguraModelPart

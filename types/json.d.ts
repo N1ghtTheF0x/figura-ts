@@ -1,4 +1,4 @@
-declare interface JsonAPI
+declare interface FiguraJson
 {
     newBuilder(): FiguraJsonBuilder
     newArray(): FiguraJsonArray
@@ -6,7 +6,7 @@ declare interface JsonAPI
     isSerializable(val: boolean | number | string | undefined): true
     isSerializable(val: unknown): boolean
 }
-declare const json: JsonAPI
+declare const json: FiguraJson
 type FiguraJsonArrayLike<T> = {[x: number]: T}
 declare interface FiguraJsonArray<T = unknown> extends FiguraJsonArrayLike<T>
 {

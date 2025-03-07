@@ -1,4 +1,4 @@
-declare interface PlayerAPI extends LivingEntityAPI
+declare interface FiguraPlayer extends FiguraLivingEntity
 {
     getFood(): number
     getSaturation(): number
@@ -13,17 +13,17 @@ declare interface PlayerAPI extends LivingEntityAPI
     getChargedAttackDelay(): number
     getShoulderEntity(): LuaTable
     getShoulderEntity(right: boolean): LuaTable
-    getTeamInfo(): LuaMap<string,PlayerTeam>
+    getTeamInfo(): LuaMap<string,FiguraPlayerTeam>
     getExperienceLevel(): number
-    getCooldownPercent(stack: ItemStackAPI,delta: number): number
+    getCooldownPercent(stack: FiguraItemStack,delta: number): number
 }
-declare const player: PlayerAPI
-interface INullEntity
+declare const player: FiguraPlayer
+interface IFiguraNullEntity
 {
-    isLoaded(): this is EntityAPI
+    isLoaded(): this is FiguraEntity
 }
-declare type NullEntity = INullEntity & {[x: string]: never}
-declare interface EntityAPI
+declare type FiguraNullEntity = IFiguraNullEntity & {[x: string]: never}
+declare interface FiguraEntity
 {
     isLoaded(): boolean
     getPos(): FiguraVec3
@@ -38,7 +38,7 @@ declare interface EntityAPI
     getMaxAir(): number
     getDimensionName(): string
     getPose(): EntityPose
-    getVehicle(): EntityAPI | undefined
+    getVehicle(): FiguraEntity | undefined
     isOnGround(): boolean
     getEyeHeight(): number
     getBoundingBox(): FiguraVec3
@@ -57,36 +57,37 @@ declare interface EntityAPI
     isSneaking(): boolean
     isCrouching(): boolean
     isMoving(): boolean
+    isMoving(ignoreY: boolean): boolean
     isFalling(): boolean
-    getItem(index: number): ItemStackAPI
+    getItem(index: number): FiguraItemStack
     getNBT(): LuaTable
     isOnFire(): boolean
     isAlive(): boolean
     getPermissionLevel(): number
-    getPassengers(): LuaTable<number,EntityAPI>
-    getControllingPassenger(): EntityAPI | undefined
-    getControlledVehicle(): EntityAPI | undefined
+    getPassengers(): LuaTable<number,FiguraEntity>
+    getControllingPassenger(): FiguraEntity | undefined
+    getControlledVehicle(): FiguraEntity | undefined
     hasContainer(): boolean
     hasInventory(): boolean
-    getTargetedBlock(): LuaMultiReturn<[BlockStateAPI,FiguraVec3,string]> | undefined
-    getTargetedBlock(ignoreLiquids: boolean): LuaMultiReturn<[BlockStateAPI,FiguraVec3,string]> | undefined
-    getTargetedBlock(ignoreLiquids: boolean,distance: number): LuaMultiReturn<[BlockStateAPI,FiguraVec3,string]> | undefined
-    getTargetedEntity(): LuaMultiReturn<[EntityAPI,FiguraVec3]> | undefined
-    getTargetedEntity(distance: number): LuaMultiReturn<[EntityAPI,FiguraVec3]> | undefined
-    getNearestEntity(type: string): EntityAPI | undefined
-    getNearestEntity(type: string,radius: number): EntityAPI | undefined
+    getTargetedBlock(): LuaMultiReturn<[FiguraBlockState,FiguraVec3,string]> | undefined
+    getTargetedBlock(ignoreLiquids: boolean): LuaMultiReturn<[FiguraBlockState,FiguraVec3,string]> | undefined
+    getTargetedBlock(ignoreLiquids: boolean,distance: number): LuaMultiReturn<[FiguraBlockState,FiguraVec3,string]> | undefined
+    getTargetedEntity(): LuaMultiReturn<[FiguraEntity,FiguraVec3]> | undefined
+    getTargetedEntity(distance: number): LuaMultiReturn<[FiguraEntity,FiguraVec3]> | undefined
+    getNearestEntity(type: string): FiguraEntity | undefined
+    getNearestEntity(type: string,radius: number): FiguraEntity | undefined
     getVariable(): LuaTable
     getVariable(key: string): unknown
-    isLiving(): this is LivingEntityAPI
-    isPlayer(): this is PlayerAPI
+    isLiving(): this is FiguraLivingEntity
+    isPlayer(): this is FiguraPlayer
 }
-declare interface LivingEntityAPI extends EntityAPI
+declare interface FiguraLivingEntity extends FiguraEntity
 {
     getBodyYaw(): number
     getBodyYaw(delta: number): number
-    getHeldItem(): ItemStackAPI
-    getHeldItem(offhand: boolean): ItemStackAPI
-    getActiveItem(): ItemStackAPI
+    getHeldItem(): FiguraItemStack
+    getHeldItem(offhand: boolean): FiguraItemStack
+    getActiveItem(): FiguraItemStack
     getActiveItemTime(): number
     getHealth(): number
     getMaxHealth(): number
@@ -110,12 +111,12 @@ declare interface LivingEntityAPI extends EntityAPI
     isVisuallySwimming(): boolean
     riptideSpinning(): boolean
 }
-declare interface ViewerAPI
+declare interface FiguraViewer
 {
     getAttachCharge(): number
     isJumping(): boolean
     isFlying(): boolean
     getReachDistance(): number
     getAir(): number
-    getStatusEffects(): ReturnType<HostAPI["getStatusEffects"]>
+    getStatusEffects(): ReturnType<FiguraHost["getStatusEffects"]>
 }

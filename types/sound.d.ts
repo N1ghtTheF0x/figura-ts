@@ -1,4 +1,4 @@
-declare interface LuaSound
+declare interface FiguraSound
 {
     play(): this
     isPlaying(): boolean
@@ -25,12 +25,12 @@ declare interface LuaSound
     setSubtitle(subtitle: string): this
     subtitle(subtitle: string): this
 }
-interface ISoundAPI
+interface IFiguraSounds
 {
-    playSound(sound: string,pos: FiguraVec3): LuaSound
-    playSound(sound: string,x: number,y: number,z: number): LuaSound
-    playSound(sound: string,pos: FiguraVec3,volume: number,pitch: number,loop: boolean): LuaSound
-    playSound(sound: string,px: number,y: number,z: number,volume: number,pitch: number,loop: boolean): LuaSound
+    playSound(sound: string,pos: FiguraVec3): FiguraSound
+    playSound(sound: string,x: number,y: number,z: number): FiguraSound
+    playSound(sound: string,pos: FiguraVec3,volume: number,pitch: number,loop: boolean): FiguraSound
+    playSound(sound: string,px: number,y: number,z: number,volume: number,pitch: number,loop: boolean): FiguraSound
     stopSound(): this
     stopSound(id: string): this
     newSound(name: string,byteArray: LuaTable<number,number>): this
@@ -38,5 +38,5 @@ interface ISoundAPI
     getCustomSounds(): LuaSet<string>
     isPresent(id: string): boolean
 }
-declare type SoundAPI = ISoundAPI & Record<string,LuaSound>
-declare const sounds: SoundAPI
+declare type FiguraSounds = IFiguraSounds & Record<string,FiguraSound>
+declare const sounds: FiguraSounds

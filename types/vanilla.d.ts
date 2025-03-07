@@ -1,11 +1,11 @@
-declare type VanillaModelAPI = Record<VanillaPlayerGroup,VanillaGroupPart> & Record<VanillaPlayerPart,VanillaModelPart>
-declare const vanilla_model: VanillaModelAPI
-interface IVanillaGroupPart extends VanillaPart
+declare type FiguraVanillaModel = Record<VanillaPlayerGroup,FiguraVanillaGroupPart> & Record<VanillaPlayerPart,VanillaModelPart>
+declare const vanilla_model: FiguraVanillaModel
+interface IFiguraVanillaGroupPart extends FiguraVanillaPart
 {
     
 }
-declare type VanillaGroupPart = IVanillaGroupPart & Record<string,VanillaPart>
-declare interface VanillaPart
+declare type FiguraVanillaGroupPart = IFiguraVanillaGroupPart & Record<string,FiguraVanillaPart>
+declare interface FiguraVanillaPart
 {
     getVisible(): boolean
     setVisible(visible: boolean): this
@@ -36,7 +36,7 @@ declare interface VanillaPart
     offsetScale(x: number,y: number,z: number): this
     getOffsetScale(): FiguraVec3
 }
-declare interface VanillaModelPart extends VanillaPart
+declare interface VanillaModelPart extends FiguraVanillaPart
 {
     getOriginVisible(): boolean
     getOriginRot(): FiguraVec3

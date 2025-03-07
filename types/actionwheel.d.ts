@@ -1,4 +1,4 @@
-declare interface ActionWheelAPI
+declare interface FiguraActionWheel
 {
     leftClick?: () => void
     rightClick?: () => void
@@ -8,26 +8,26 @@ declare interface ActionWheelAPI
     execute(index: number,rightClick: boolean): this
     isEnabled(): boolean
     getSelected(): number
-    getSelectedAction(): Action
-    newAction(): Action
-    newPage(): Page
-    newPage(title: string): Page
+    getSelectedAction(): FiguraAction
+    newAction(): FiguraAction
+    newPage(): FiguraPage
+    newPage(title: string): FiguraPage
     setPage(title: string): this
-    setPage(page: Page): this
-    getPage(): LuaTable<string,Page>
-    getPage(title: string): Page
-    getCurrentPage(): Page
+    setPage(page: FiguraPage): this
+    getPage(): LuaTable<string,FiguraPage>
+    getPage(title: string): FiguraPage
+    getCurrentPage(): FiguraPage
 }
-declare type OnClickAction = (this: void,action: Action) => void
-declare type OnToggleAction = (this: void,toggle: boolean,action: Action) => void
-declare type OnScrollAction = (this: void,dir: number,action: Action) => void
-declare interface Action
+declare type FiguraOnClickAction = (this: void,action: FiguraAction) => void
+declare type FiguraOnToggleAction = (this: void,toggle: boolean,action: FiguraAction) => void
+declare type FiguraOnScrollAction = (this: void,dir: number,action: FiguraAction) => void
+declare interface FiguraAction
 {
-    leftClick: OnClickAction
-    rightClick: OnClickAction
-    toggle: OnToggleAction
-    untoggle: OnToggleAction
-    scroll: OnScrollAction
+    leftClick: FiguraOnClickAction
+    rightClick: FiguraOnClickAction
+    toggle: FiguraOnToggleAction
+    untoggle: FiguraOnToggleAction
+    scroll: FiguraOnScrollAction
     getTitle(): string
     setTitle(): this
     setTitle(title: string): this
@@ -43,13 +43,13 @@ declare interface Action
     setHoverColor(r: number,g: number,b: number): this
     hoverColor(color: FiguraVec3): this
     hoverColor(r: number,g: number,b: number): this
-    setItem(item: ItemStackAPI): this
+    setItem(item: FiguraItemStack): this
     setItem(item: string): this
-    item(item: ItemStackAPI): this
+    item(item: FiguraItemStack): this
     item(item: string): this
-    setHoverItem(item: ItemStackAPI): this
+    setHoverItem(item: FiguraItemStack): this
     setHoverItem(item: string): this
-    hoverItem(item: ItemStackAPI): this
+    hoverItem(item: FiguraItemStack): this
     hoverItem(item: string): this
     setTexture(texture: FiguraTexture): this
     setTexture(texture: FiguraTexture,u: number,v: number): this
@@ -67,26 +67,26 @@ declare interface Action
     hoverTexture(texture: FiguraTexture,u: number,v: number): this
     hoverTexture(texture: FiguraTexture,u: number,v: number,width: number,height: number): this
     hoverTexture(texture: FiguraTexture,u: number,v: number,width: number,height: number,scale: number): this
-    setOnLeftClick(leftFunction: OnClickAction): this
-    onLeftClick(leftFunction: OnClickAction): this
-    setOnRightClick(rightFunction: OnClickAction): this
-    onRightClick(rightFunction: OnClickAction): this
-    setOnToggle(toggleFunction: OnToggleAction): this
-    onToggle(toggleFunction: OnToggleAction): this
-    setOnUntoggle(toggleFunction: OnToggleAction): this
-    onUntoggle(toggleFunction: OnToggleAction): this
-    setOnScroll(scrollFunction: OnScrollAction): this
-    onScroll(scrollFunction: OnScrollAction): this
+    setOnLeftClick(leftFunction: FiguraOnClickAction): this
+    onLeftClick(leftFunction: FiguraOnClickAction): this
+    setOnRightClick(rightFunction: FiguraOnClickAction): this
+    onRightClick(rightFunction: FiguraOnClickAction): this
+    setOnToggle(toggleFunction: FiguraOnToggleAction): this
+    onToggle(toggleFunction: FiguraOnToggleAction): this
+    setOnUntoggle(toggleFunction: FiguraOnToggleAction): this
+    onUntoggle(toggleFunction: FiguraOnToggleAction): this
+    setOnScroll(scrollFunction: FiguraOnScrollAction): this
+    onScroll(scrollFunction: FiguraOnScrollAction): this
     getToggleTitle(): string
     setToggleTitle(title: string): this
     toggleTitle(title: string): this
-    setToggleColor(color: FiguraVec3): Action
-    setToggleColor(r: number,g: number,b: number): Action
-    toggleColor(color: FiguraVec3): Action
-    toggleColor(r: number,g: number,b: number): Action
-    setToggleItem(item: ItemStackAPI): this
+    setToggleColor(color: FiguraVec3): FiguraAction
+    setToggleColor(r: number,g: number,b: number): FiguraAction
+    toggleColor(color: FiguraVec3): FiguraAction
+    toggleColor(r: number,g: number,b: number): FiguraAction
+    setToggleItem(item: FiguraItemStack): this
     setToggleItem(item: string): this
-    toggleItem(item: ItemStackAPI): this
+    toggleItem(item: FiguraItemStack): this
     toggleItem(item: string): this
     setToggleTexture(texture: FiguraTexture): this
     setToggleTexture(texture: FiguraTexture,u: number,v: number): this
@@ -100,21 +100,21 @@ declare interface Action
     setToggled(bool: boolean): this
     toggled(bool: boolean): this
 }
-declare interface Page
+declare interface FiguraPage
 {
     keepSlots: boolean
     shouldKeepSlots(): boolean
     setKeepSlots(bool: boolean): this
     getTitle(): string
-    newAction(): Action
-    newAction(index: number): Action
-    getAction(index: number): Action
-    setAction(index: number,action: Action): this
-    action(index: number,action: Action): this
+    newAction(): FiguraAction
+    newAction(index: number): FiguraAction
+    getAction(index: number): FiguraAction
+    setAction(index: number,action: FiguraAction): this
+    action(index: number,action: FiguraAction): this
     getSlotsShift(): number
     setSlotsShift(shift: number): this
     slotsShift(shift: number): this
-    getActions(): LuaTable<number,Action>
-    getActions(shift: number): LuaTable<number,Action>
+    getActions(): LuaTable<number,FiguraAction>
+    getActions(shift: number): LuaTable<number,FiguraAction>
 }
-declare const action_wheel: ActionWheelAPI
+declare const action_wheel: FiguraActionWheel

@@ -1,4 +1,4 @@
-declare interface RenderTask
+declare interface FiguraRenderTask
 {
     remove(): this
     getName(): string
@@ -37,32 +37,32 @@ declare interface RenderTask
     setMatrix(matrix: FiguraMat4): this
     matrix(matrix: FiguraMat4): this
 }
-declare interface BlockTask extends RenderTask
+declare interface FiguraBlockTask extends FiguraRenderTask
 {
     setBlock(block: string): this
-    setBlock(block: BlockStateAPI): this
+    setBlock(block: FiguraBlockState): this
     block(block: string): this
-    block(block: BlockStateAPI): this
+    block(block: FiguraBlockState): this
 }
-declare interface EntityTask extends RenderTask
+declare interface FiguraEntityTask extends FiguraRenderTask
 {
-    asEntity(): EntityAPI | undefined
+    asEntity(): FiguraEntity | undefined
     setNBT(nbt: string): this
     setNBT(id: string,nbt: string): this
     updateWalkingDistance(distance: number): this
     setHeadRotation(rotation: FiguraVec2): this
 }
-declare interface ItemTask extends RenderTask
+declare interface FiguraItemTask extends FiguraRenderTask
 {
     setItem(item: string): this
-    setItem(item: ItemStackAPI): this
+    setItem(item: FiguraItemStack): this
     item(item: string): this
-    item(item: ItemStackAPI): this
+    item(item: FiguraItemStack): this
     getDisplayMode(): ItemDisplayTaskMode
     setDisplayMode(displayMode: ItemDisplayTaskMode): this
     displayMode(displayMode: ItemDisplayTaskMode): this
 }
-declare interface SpriteTask extends RenderTask
+declare interface FiguraSpriteTask extends FiguraRenderTask
 {
     getTexture(): string
     setTexture(textureLocation: string,width: number,height: number): this
@@ -110,9 +110,9 @@ declare interface SpriteTask extends RenderTask
     getRenderType(): RenderType
     setRenderType(renderType: RenderType): this
     renderType(renderType: RenderType): this
-    getVertices(): LuaTable<number,Vertex>
+    getVertices(): LuaTable<number,FiguraVertex>
 }
-declare interface TextTask extends RenderTask
+declare interface FiguraTextTask extends FiguraRenderTask
 {
     getText(): string
     setText(text: string): this
@@ -150,7 +150,7 @@ declare interface TextTask extends RenderTask
     setOpacity(opacity: number): this
     opacity(opacity: number): this
 }
-declare interface Vertex
+declare interface FiguraVertex
 {
     getPos(): FiguraVec3
     setPos(pos: FiguraVec3): this

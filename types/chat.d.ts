@@ -1,4 +1,4 @@
-declare interface ChatMessage
+declare interface FiguraChatMessage
 {
     addedTime: number
     message: string
