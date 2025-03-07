@@ -61,6 +61,7 @@ events.ENTITY_INIT.register(someFunc,someName) // works
   - ping functions do not need casting anymore
   - added some Minecraft interfaces from their wiki for nameplates
 - `1.1.0`
+  - added more Minecraft interfaces
   - Changed all type names to start with `Figura` to not cause any issues with other libraries (maybe)
   - updated for Figura 0.1.5
 
