@@ -64,6 +64,8 @@ events.ENTITY_INIT.register(someFunc,someName) // works
   - added more Minecraft interfaces
   - Changed all type names to start with `Figura` to not cause any issues with other libraries (maybe)
   - updated for Figura 0.1.5
+- `1.1.1`
+  - fixed raycast api
 
 ## License
 
