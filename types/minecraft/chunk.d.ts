@@ -8,7 +8,7 @@ declare namespace Minecraft
         zPos: number
         Status: ChunkNBT.Status
         LastUpdate: number
-
+        sections: NBTCompound<ChunkNBT.Section>
     }
     export namespace ChunkNBT
     {
@@ -17,12 +17,15 @@ declare namespace Minecraft
         {
             Y: number
             block_states: Section.BlockState
+            biomes: Section.Biomes
+            BlockLight: NBTByteArray
+            SkyLight: NBTByteArray
         }
         export namespace Section
         {
             export interface BlockState
             {
-                
+                palette: BlockState.Palette
                 data: NBTList<number>
             }
             export namespace BlockState
@@ -31,6 +34,18 @@ declare namespace Minecraft
                 {
                     name: Identifier
                     properties: NBTCompound<string>
+                }
+            }
+            export interface Biomes
+            {
+                palette: NBTCompound<Biomes.Palette>
+                data: NBTList<number>
+            }
+            export namespace Biomes
+            {
+                export interface Palette
+                {
+                    Name: string
                 }
             }
         }

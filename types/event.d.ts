@@ -24,20 +24,22 @@ declare type FiguraEventMap = {
     // special
     "ITEM_RENDER": (this: void,item: FiguraItemStack,mode: ItemDisplayMode,pos: FiguraVec3,rot: FiguraVec3,scale: FiguraVec3,leftHanded: boolean) => void | FiguraModelPart
     "CHAT_SEND_MESSAGE": (this: void,message: string) => void | string
-    "CHAT_RECEIVE_MESSAGE": (this: void,message: string,json: string) => void | boolean | LuaMultiReturn<[string,FiguraVec3]>
+    "CHAT_RECEIVE_MESSAGE": (this: void,message: string,json: string) => void | boolean | LuaMultiReturn<[string,FiguraVec3]> | LuaMultiReturn<[string]>
 }
 declare type FiguraEventEntries = {
     [x in keyof FiguraEventMap]: FiguraLuaEvent<FiguraEventMap[x]>
 }
 type EventCallbacks = {
-    // TODO: can we make this possible?
-    [x in keyof FiguraEventMap as Lowercase<x>]: FiguraEventMap[x] // & LuaEvent<EventMap[x]>
+    [x in keyof FiguraEventMap as Lowercase<x>]: FiguraEventMap[x]
+}
+type EventLuaEvents = {
+    [x in keyof FiguraEventMap as Lowercase<x>]: FiguraLuaEvent<FiguraEventMap[x]>
 }
 interface EventMethods
 {
     getEvents(): LuaMap<keyof FiguraEventMap,FiguraLuaEvent>
 }
-declare type FiguraEvents = EventMethods & FiguraEventEntries & EventCallbacks
+declare type FiguraEvents = EventMethods & FiguraEventEntries & EventCallbacks & EventLuaEvents
 declare const events: FiguraEvents
 declare interface FiguraLuaEvent<Func extends (...args: Array<any>) => void = () => void>
 {

@@ -45,7 +45,7 @@ declare interface FiguraWorld
     getEntities(pos1: FiguraVec3,pos2: FiguraVec3): LuaTable<number,FiguraEntity>
     getEntities(x1: number,y1: number,z1: number,x2: number,y2: number,z2: number): LuaTable<number,FiguraEntity>
     getEntity(uuid: string): FiguraEntity
-    avatarVars(): LuaTable<string,LuaTable>
+    avatarVars(): LuaTable<string,LuaTable<string,any | undefined>>
     newBlock(block: string): FiguraBlockState
     newBlock(block: string,pos: FiguraVec3): FiguraBlockState
     newBlock(block: string,x: number,y: number,z: number): FiguraBlockState

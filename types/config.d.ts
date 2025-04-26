@@ -1,10 +1,12 @@
-declare interface FiguraConfig<Data = {}>
+declare type FiguraAllowedConfigType = boolean | number | string | LuaTable | FiguraAnyVector | FiguraAnyMatrix | undefined
+
+declare interface FiguraConfig
 {
     getName(): string
     setName(name: string): FiguraConfig
     name(name: string): FiguraConfig
-    save<Key extends string,Value>(key: Key,value: Value): FiguraConfig<Data & {[x in Key]: Value}>
-    load(): Data
-    load<Key extends keyof Data>(key: Key): Data[Key]
+    save(key: string,value: FiguraAllowedConfigType): FiguraConfig
+    load(): LuaTable<string,any>
+    load<Value extends FiguraAllowedConfigType>(key: string): Value
 }
 declare const config: FiguraConfig

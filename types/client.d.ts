@@ -1,5 +1,7 @@
 /// <reference path="scoreboard.d.ts" />
 /// <reference path="tablist.d.ts" />
+/// <reference path="server.d.ts" />
+/// <reference path="date.d.ts" />
 
 declare interface FiguraClient
 {
@@ -52,12 +54,12 @@ declare interface FiguraClient
     getViewer(): FiguraViewer
     getCameraEntity(): FiguraEntity
     isIntegratedServer(): boolean
-    getServerData(): LuaTable
-    getDate(): LuaTable
+    getServerData(): ServerData
+    getDate(): FiguraDate
     getFrameTime(): number
-    getActionBar(): unknown | undefined
-    getTitle(): unknown | undefined
-    getSubtitle(): unknown | undefined
+    getActionBar(): string | undefined
+    getTitle(): string | undefined
+    getSubtitle(): string | undefined
     getScoreboard(): LuaMap<string,LuaMap<string,FiguraScoreboardObjective>>
     listAtlases(): LuaTable<number,string>
     getAtlas(path: string): FiguraTextureAtlas

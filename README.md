@@ -35,18 +35,9 @@ Now you can code just like with lua, you can then compile the code with `tstl` a
 
 ## Limitations
 
-### accessing `LuaEvent` from `events.entity_init`, `events.tick`, etc
-
-In lua you can access the `LuaEvent` object from the lowercase named events but in figura-ts you can only access them from the uppercase named events (`ENTITY_INIT`, `TICK`, etc.)
-
-```typescript
-events.entity_init.register(someFunc,someName) // Does not work
-events.ENTITY_INIT.register(someFunc,someName) // works
-```
+Currently no limitations, you can use all the features TypeScript and TypeScriptToLua provides
 
 ## To-Do
-
-- figure out what `FiguraTabList.Header` and `FiguraTabList.Footer` properties have
 
 ## Changelog
 
@@ -64,8 +55,14 @@ events.ENTITY_INIT.register(someFunc,someName) // works
   - added more Minecraft interfaces
   - Changed all type names to start with `Figura` to not cause any issues with other libraries (maybe)
   - updated for Figura 0.1.5
-- `1.1.1`
+- `1.1.1` (unreleased bc I forgor 💀)
   - fixed raycast api
+- `1.2.0`
+  - events with lowercase name can be accessed as `FiguraLuaEvent` now
+  - added types to `client:getTitle`, `client:getSubtitle` and `client:getActionbar`
+  - some return types with `LuaTable` now have specific types
+  - `config` is not a generic anymore, but strict types can only be passed now
+  - even more Minecraft related types added (not my high priority rn)
 
 ## License
 

@@ -60,7 +60,7 @@ declare interface FiguraEntity
     isMoving(ignoreY: boolean): boolean
     isFalling(): boolean
     getItem(index: number): FiguraItemStack
-    getNBT(): LuaTable
+    getNbt(): LuaTable
     isOnFire(): boolean
     isAlive(): boolean
     getPermissionLevel(): number
@@ -76,8 +76,8 @@ declare interface FiguraEntity
     getTargetedEntity(distance: number): LuaMultiReturn<[FiguraEntity,FiguraVec3]> | undefined
     getNearestEntity(type: string): FiguraEntity | undefined
     getNearestEntity(type: string,radius: number): FiguraEntity | undefined
-    getVariable(): LuaTable
-    getVariable(key: string): unknown
+    getVariable(): LuaTable<string>
+    getVariable<Type>(key: string): Type
     isLiving(): this is FiguraLivingEntity
     isPlayer(): this is FiguraPlayer
 }
