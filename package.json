@@ -1,6 +1,6 @@
 {
   "name": "figura-ts",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lua Types for the Minecraft Mod Figura",
   "types": "index.d.ts",
   "scripts": {},
