@@ -32,14 +32,11 @@ declare type FiguraEventEntries = {
 type EventCallbacks = {
     [x in keyof FiguraEventMap as Lowercase<x>]: FiguraEventMap[x]
 }
-type EventLuaEvents = {
-    [x in keyof FiguraEventMap as Lowercase<x>]: FiguraLuaEvent<FiguraEventMap[x]>
-}
 interface EventMethods
 {
     getEvents(): LuaMap<keyof FiguraEventMap,FiguraLuaEvent>
 }
-declare type FiguraEvents = EventMethods & FiguraEventEntries & EventCallbacks & EventLuaEvents
+declare type FiguraEvents = EventMethods & FiguraEventEntries & EventCallbacks
 declare const events: FiguraEvents
 declare interface FiguraLuaEvent<Func extends (...args: Array<any>) => void = () => void>
 {

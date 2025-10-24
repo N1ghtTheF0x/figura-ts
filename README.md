@@ -35,7 +35,15 @@ Now you can code just like with lua, you can then compile the code with `tstl` a
 
 ## Limitations
 
-Currently no limitations, you can use all the features TypeScript and TypeScriptToLua provides
+### accessing `LuaEvent` from `events.entity_init`, `events.tick`, etc
+
+In lua you can access the `LuaEvent` object from the lowercase named events but in figura-ts you can only access them from the uppercase named events (`ENTITY_INIT`, `TICK`, etc.)
+
+```typescript
+
+events.entity_init.register(someFunc,someName) // Does not work
+events.ENTITY_INIT.register(someFunc,someName) // works
+```
 
 ## To-Do
 
@@ -63,6 +71,8 @@ Currently no limitations, you can use all the features TypeScript and TypeScript
   - some return types with `LuaTable` now have specific types
   - `config` is not a generic anymore, but strict types can only be passed now
   - even more Minecraft related types added (not my high priority rn)
+- `1.2.1`
+  - events with lowercase name cannot actually be accessed as `FiguraLuaEvent`, whoops
 
 ## License
 
