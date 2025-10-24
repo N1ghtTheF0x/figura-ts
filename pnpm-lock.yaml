@@ -14,7 +14,7 @@ importers:
     devDependencies:
       typescript-to-lua:
         specifier: latest
-        version: 1.31.0(typescript@5.6.2)
+        version: 1.32.0(typescript@5.6.2)
 
 packages:
 
@@ -49,25 +49,25 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  resolve@1.22.10:
-    resolution: {integrity: sha512-NPRy+/ncIMeDlTAsuqwKIiferiawhefFJtkNSW0qZJEqMEb+qBt/77B/jGeeek+F0uOeN05CDa6HXbbIgtVX4w==}
+  resolve@1.22.11:
+    resolution: {integrity: sha512-RfqAvLnMl313r7c9oclB1HhUEAezcpLjz95wFH4LVuhk9JF/r22qmVP9AMmOU4vMX7Q8pN8jwNg/CSpdFnMjTQ==}
     engines: {node: '>= 0.4'}
     hasBin: true
 
-  source-map@0.7.4:
-    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
-    engines: {node: '>= 8'}
+  source-map@0.7.6:
+    resolution: {integrity: sha512-i5uvt8C3ikiWeNZSVZNWcfZPItFQOsYTUAOkcUPGd8DqDy1uOUikjt5dG+uRlwyvR108Fb9DOd4GvXfT0N2/uQ==}
+    engines: {node: '>= 12'}
 
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  tapable@2.2.1:
-    resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
+  tapable@2.3.0:
+    resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
     engines: {node: '>=6'}
 
-  typescript-to-lua@1.31.0:
-    resolution: {integrity: sha512-hbHso6C1g2sKZkwI2J9wUij4PUyBF/Hw0tpZOHtaBOa8CcJXXYvdlmh7dJ34bKgwiBzbc7KalPLX1D8a1WjYQA==}
+  typescript-to-lua@1.32.0:
+    resolution: {integrity: sha512-RVopoyoYiYJFrv/0Yw6i77lBI9DhNhAGxuq6TV4b3JzCWjabzwUd/yhTCSVKzWiiAs0zj24Mi7iH9biWG6Phjw==}
     engines: {node: '>=16.10.0'}
     hasBin: true
     peerDependencies:
@@ -85,7 +85,7 @@ snapshots:
   enhanced-resolve@5.8.2:
     dependencies:
       graceful-fs: 4.2.11
-      tapable: 2.2.1
+      tapable: 2.3.0
 
   function-bind@1.1.2: {}
 
@@ -105,25 +105,25 @@ snapshots:
 
   picomatch@2.3.1: {}
 
-  resolve@1.22.10:
+  resolve@1.22.11:
     dependencies:
       is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
-  source-map@0.7.4: {}
+  source-map@0.7.6: {}
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  tapable@2.2.1: {}
+  tapable@2.3.0: {}
 
-  typescript-to-lua@1.31.0(typescript@5.6.2):
+  typescript-to-lua@1.32.0(typescript@5.6.2):
     dependencies:
       '@typescript-to-lua/language-extensions': 1.19.0
       enhanced-resolve: 5.8.2
       picomatch: 2.3.1
-      resolve: 1.22.10
-      source-map: 0.7.4
+      resolve: 1.22.11
+      source-map: 0.7.6
       typescript: 5.6.2
 
   typescript@5.6.2: {}
