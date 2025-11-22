@@ -73,6 +73,13 @@ events.ENTITY_INIT.register(someFunc,someName) // works
   - even more Minecraft related types added (not my high priority rn)
 - `1.2.1`
   - events with lowercase name cannot actually be accessed as `FiguraLuaEvent`, whoops
+- `1.2.2`
+  - added missing `this: void` parameter in callbacks
+  - removed generic in avatar
+  - changed instances of `unknown` to `any`
+  - `getTranslatedString` second overload changed to variadic arguments
+  - use `Minecraft.NBT*` interfaces and removed leftovers of early implementations
+  - config `load` is typed
 
 ## License
 
