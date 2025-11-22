@@ -17,5 +17,6 @@ declare namespace Minecraft
         components?: ComponentMap
     }
     export type ComponentMap = Record<string,Components>
+    // TODO: continue doing this
     export type Components = unknown
 }

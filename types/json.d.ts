@@ -4,11 +4,11 @@ declare interface FiguraJson
     newArray(): FiguraJsonArray
     newObject(): FiguraJsonObject
     isSerializable(val: boolean | number | string | undefined): true
-    isSerializable(val: unknown): boolean
+    isSerializable(val: any): boolean
 }
 declare const json: FiguraJson
 type FiguraJsonArrayLike<T> = {[x: number]: T}
-declare interface FiguraJsonArray<T = unknown> extends FiguraJsonArrayLike<T>
+declare interface FiguraJsonArray<T = any> extends FiguraJsonArrayLike<T>
 {
     get(index: number): T
     size(): number
@@ -33,14 +33,14 @@ declare interface FiguraJsonObject<T = object> extends LuaIterable<LuaMultiRetur
 {
     size(): number
     get<Key extends keyof T>(key: Key): T[Key]
-    containsKey<Key extends string>(key: Key): this is FiguraJsonObject<T & {[key in Key]: unknown}>
+    containsKey<Key extends string>(key: Key): this is FiguraJsonObject<T & {[key in Key]: any}>
     put(key: string,value: T): T
     remove<Key extends keyof T>(key: Key): T[Key]
     clear(): void
-    containsValue<V extends unknown>(value: V): this is FiguraJsonObject<T & {[key: string]: V}>
+    containsValue<V>(value: V): this is FiguraJsonObject<T & {[key: string]: V}>
 }
 declare interface FiguraJsonSerializer
 {
-    serialize(val: unknown): string
-    deserialize<T = unknown>(str: string): T
+    serialize(val: any): string
+    deserialize<T>(str: string): T
 }

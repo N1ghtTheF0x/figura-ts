@@ -1,15 +1,10 @@
-declare type NBTByteArray = Array<number>
-declare type NBTList<T> = Array<T>
-declare type NBTCompound<T> = Record<string,T>
-declare type NBTVector3 = Record<0 | 1 | 2,number>
-
 declare interface FiguraAvatar
 {
     metadata: FiguraAvatar.Metadata
-    resources?: NBTCompound<Record<number,number>>
-    animations?: NBTList<FiguraAvatar.Animation>
-    sounds?: NBTCompound<NBTByteArray>
-    scripts?: NBTCompound<NBTByteArray>
+    resources?: Minecraft.NBTCompound<Record<number,number>>
+    animations?: Minecraft.NBTList<FiguraAvatar.Animation>
+    sounds?: Minecraft.NBTCompound<Minecraft.NBTByteArray>
+    scripts?: Minecraft.NBTCompound<Minecraft.NBTByteArray>
     textures?: FiguraAvatar.Textures
     models?: FiguraAvatar.Model
 }
@@ -23,7 +18,7 @@ declare namespace FiguraAvatar
         id?: string
         color?: string
         minify?: boolean
-        autoAnims?: NBTList<string>
+        autoAnims?: Minecraft.NBTList<string>
     }
     export interface Animation
     {
@@ -36,7 +31,7 @@ declare namespace FiguraAvatar
         bld?: number
         sdel?: number
         ldel?: number
-        code?: NBTList<Animation.Code>
+        code?: Minecraft.NBTList<Animation.Code>
     }
     export namespace Animation
     {
@@ -48,8 +43,8 @@ declare namespace FiguraAvatar
     }
     export interface Textures
     {
-        data: NBTList<Textures.Data>
-        src: NBTCompound<NBTByteArray>
+        data: Minecraft.NBTList<Textures.Data>
+        src: Minecraft.NBTCompound<Minecraft.NBTByteArray>
     }
     export namespace Textures
     {
@@ -61,11 +56,11 @@ declare namespace FiguraAvatar
     }
     export interface Model
     {
-        piv?: NBTVector3
-        chld: NBTList<Model>
+        piv?: Minecraft.NBTVector3
+        chld: Minecraft.NBTList<Model>
         name: string
         pt?: string
-        anim?: NBTList<Model.Animation>
+        anim?: Minecraft.NBTList<Model.Animation>
     }
     export namespace Model
     {
@@ -84,7 +79,7 @@ declare namespace FiguraAvatar
             {
                 export interface Position
                 {
-                    pre: NBTVector3
+                    pre: Minecraft.NBTVector3
                     time: number
                     int: string
                 }

@@ -54,11 +54,11 @@ declare interface FiguraBuffer
     close(): void
     isClosed(): boolean
 }
-declare interface FiguraFuture<T = unknown,Valid extends boolean = false>
+declare interface FiguraFuture<T = any,Valid extends boolean = false>
 {
     isDone(): this is FiguraFuture<T,true>
     getOrError(): Valid extends true ? T : never
-    getValue(): T | undefined
+    getValue(): Valid extends true ? T : T | undefined
     hasError(): this is FiguraFuture<T,false>
     throwError(): Valid extends false ? never : void
 }

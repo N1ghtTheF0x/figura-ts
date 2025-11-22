@@ -65,7 +65,7 @@ declare interface FiguraClient
     getAtlas(path: string): FiguraTextureAtlas
     getTabList(): FiguraTabList
     getTranslatedString(text: string): string
-    getTranslatedString(text: string,args: unknown): string
+    getTranslatedString(text: string,...args: Array<any>): string
     getRegistry(registryName: Registries): LuaTable<number,string>
     getEnum(enumName: string): LuaTable<number,string>
 }

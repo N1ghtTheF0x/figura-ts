@@ -1,9 +1,9 @@
 /// <reference path="nbt.d.ts" />
 
-declare interface FiguraAvatar<Data = {}>
+declare interface FiguraAvatar
 {
     getNBT(): FiguraAvatar
-    store<Key extends string,Value>(key: Key,value: Value): FiguraAvatar<Data & {[x in Key]: Value}>
+    store(key: string,value: any): this
     getUUID(): string
     getCurrentInstruction(): number
     getColor(): string

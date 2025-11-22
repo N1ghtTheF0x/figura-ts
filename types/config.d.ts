@@ -6,7 +6,7 @@ declare interface FiguraConfig
     setName(name: string): FiguraConfig
     name(name: string): FiguraConfig
     save(key: string,value: FiguraAllowedConfigType): FiguraConfig
-    load(): LuaTable<string,any>
+    load(): LuaTable<string,FiguraAllowedConfigType>
     load<Value extends FiguraAllowedConfigType>(key: string): Value
 }
 declare const config: FiguraConfig
