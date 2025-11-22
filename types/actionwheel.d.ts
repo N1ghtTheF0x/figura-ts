@@ -1,7 +1,7 @@
 declare interface FiguraActionWheel
 {
-    leftClick?: () => void
-    rightClick?: () => void
+    leftClick?: (this: void) => void
+    rightClick?: (this: void) => void
     scroll?: () => void
     execute(): this
     execute(index: number): this

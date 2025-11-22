@@ -79,7 +79,7 @@ declare interface FiguraVec2 extends IFiguraVector<FiguraVec2,FiguraMat2>
     toRad(): this
     floor(): this
     ceil(): this
-    applyFunc(func: (value: number,index: 1 | 2) => number): this
+    applyFunc(func: (this: void,value: number,index: 1 | 2) => number): this
     augmented(): FiguraVec3
     augmented(value: number): FiguraVec3
 }
@@ -123,7 +123,7 @@ declare interface FiguraVec3 extends IFiguraVector<FiguraVec3,FiguraMat3>
     toDeg(): this
     floor(): this
     ceil(): this
-    applyFunc(func: (value: number,index: 1 | 2 | 3) => number): this
+    applyFunc(func: (this: void,value: number,index: 1 | 2 | 3) => number): this
     augmented(): FiguraVec4
     augmented(value: number): FiguraVec4
     cross(other: FiguraVec3): this
@@ -172,6 +172,6 @@ declare interface FiguraVec4 extends IFiguraVector<FiguraVec4,FiguraMat4>
     toDeg(): this
     floor(): this
     ceil(): this
-    applyFunc(func: (value: number,index: 1 | 2 | 3 | 4) => number): this
+    applyFunc(func: (this: void,value: number,index: 1 | 2 | 3 | 4) => number): this
 }
 declare type FiguraAnyVector = FiguraVec2 | FiguraVec3 | FiguraVec4
