@@ -1,12 +1,4 @@
 {
     "files": ["test.ts"],
-    "compilerOptions": {
-        "target": "ESNext",
-        "lib": ["ESNext"],
-        "strict": true
-    },
-    "tstl": {
-        "luaTarget": "5.2",
-        "luaLibImport": "require"
-    }
+    "extends": "../tsconfig.json"
 }

@@ -1,1 +1,1 @@
-/// <reference types="figura-ts" />
+/// <reference types="../index.d.ts" />

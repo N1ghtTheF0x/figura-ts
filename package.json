@@ -1,9 +1,11 @@
 {
   "name": "figura-ts",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Lua Types for the Minecraft Mod Figura",
   "types": "index.d.ts",
-  "scripts": {},
+  "scripts": {
+    "test": "tstl -p tests/tsconfig.json"
+  },
   "keywords": [
     "minecraft",
     "typescript",
@@ -16,7 +18,8 @@
   "author": "N1ghtTheF0x",
   "license": "MIT",
   "devDependencies": {
-    "typescript-to-lua": "latest"
+    "typescript-to-lua": "latest",
+    "typescript": "latest"
   },
   "dependencies": {
     "lua-types": "latest"
