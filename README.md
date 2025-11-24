@@ -80,6 +80,12 @@ events.ENTITY_INIT.register(someFunc,someName) // works
   - `getTranslatedString` second overload changed to variadic arguments
   - use `Minecraft.NBT*` interfaces and removed leftovers of early implementations
   - config `load` is typed
+- `1.2.3`
+  - fixed `KeyID` (reported by **ZedDevStuff**)
+    - it used old key ids from the outdated wiki
+    - minecraft key ids are a seperate type (`Minecraft.KeyID`) as well as figura key ids (`FiguraKeyID`)
+    - added missing key ids from minecraft
+  - keybinds API was altered to fit correct key ids
 
 ## License
 
